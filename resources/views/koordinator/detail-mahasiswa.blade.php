@@ -1,6 +1,6 @@
 @extends('layouts/main')
 @section('container')
-<h2 style="text-align:center;">Seleksi Adiministrasi</h2>
+<h2 style="text-align:center;">Seleksi Administrasi</h2>
 
 <div class="row align-items-start mt-3">
     <div class="row g-3">
@@ -9,11 +9,7 @@
             <input type="number" class="form-control" name="nim" id="nim" readonly
                 value="{{ $pendaftaran->mahasiswa->nim }}">
         </div>
-        <div class="col-md-6">
-            <label for="gender" class="form-label">Jenis Kelamin</label>
-            <input type="text" class="form-control" name="gender" id="gender" readonly
-                value="{{ $pendaftaran->gender }}">
-        </div>
+
         <div class="col-md-6">
             <label for="name" class="form-label">Nama Lengkap</label>
             <input type="text" class="form-control" name="name" id="name" readonly
@@ -24,21 +20,13 @@
             <input type="text" class="form-control" name="peminatan" id="peminatan" readonly
                 value="{{ $pendaftaran->peminatan }}">
         </div>
-        <div class="col-md-6">
-            <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-            <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" readonly
-                value="{{ $pendaftaran->tempat_lahir }}">
-        </div>
+
         <div class="col-md-6">
             <label for="angkatan" class="form-label">Angkatan</label>
             <input type="number" class="form-control" name="angkatan" id="angkatan" readonly
                 value="{{ $pendaftaran->angkatan }}">
         </div>
-        <div class="col-md-6">
-            <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-            <input type="text" class="form-control" name="tanggal_lahir" id="tanggal_lahir" readonly
-                value="{{ $pendaftaran->tanggal_lahir }}">
-        </div>
+
         <div class="col-md-6 ">
             <div class="input-group">
                 <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
@@ -47,11 +35,7 @@
                     value="{{ $pendaftaran->phone_number }}">
             </div>
         </div>
-        <div class="col-md-12">
-            <label for="address" class="form-label">Alamat</label>
-            <input type="text" class="form-control" name="address" id="address" readonly
-                value="{{ $pendaftaran->address }}">
-        </div>
+
         <div class="my-4">
         </div>
         <div class="col-md-3">
@@ -217,41 +201,20 @@
         </div>
 
         <div class="col-md-6 p-2">
-            <h6 style="text-align:center;">Alternatif 1</h6>
-            <label for="alt1_p1" class="form-label">Pembimbing 1</label>
-            <input type="text" class="form-control" name="alt1_p1" id="alt1_p1" readonly
-                value="{{ $pendaftaran->alt1_p1 }}">
-            <label for="alt1_p2" class="form-label mt-2">Pembimbing 2</label>
-            <input type="text" class="form-control" name="alt1_p2" id="alt1_p2" readonly
-                value="{{ $pendaftaran->alt1_p2 }}">
+            <h6 style="text-align:center;">Pembimbing</h6>
+            <label for="p1" class="form-label">Pembimbing 1</label>
+            <input type="text" class="form-control" name="p1" id="p1" readonly value="{{ $pendaftaran->p1 }}">
+            <label for="p2" class="form-label mt-2">Pembimbing 2</label>
+            <input type="text" class="form-control" name="p2" id="p2" readonly value="{{ $pendaftaran->p2 }}">
         </div>
         <div class="col-md-6 p-2">
-            <h6 style="text-align:center;">Alternatif 2</h6>
-            <label for="alt2_p1" class="form-label">Pembimbing 1</label>
-            <input type="text" class="form-control" name="alt2_p1" id="alt2_p1" readonly
-                value="{{ $pendaftaran->alt2_p1 }}">
-            <label for="alt2_p2" class="form-label mt-2">Pembimbing 2</label>
-            <input type="text" class="form-control" name="alt2_p2" id="alt2_p2" readonly
-                value="{{ $pendaftaran->alt2_p2 }}">
+            <h6 style="text-align:center;">Penguji</h6>
+            <label for="u1" class="form-label">Penguji 1</label>
+            <input type="text" class="form-control" name="u1" id="u1" readonly value="{{ $pendaftaran->u1 }}">
+            <label for="u2" class="form-label mt-2">Penguji 2</label>
+            <input type="text" class="form-control" name="u2" id="u2" readonly value="{{ $pendaftaran->u2 }}">
         </div>
-        <div class="col-md-6 p-2">
-            <h6 style="text-align:center;">Alternatif 3</h6>
-            <label for="alt3_p1" class="form-label">Pembimbing 1</label>
-            <input type="text" class="form-control" name="alt3_p1" id="alt3_p1" readonly
-                value="{{ $pendaftaran->alt3_p1 }}">
-            <label for="alt3_p2" class="form-label mt-2">Pembimbing 2</label>
-            <input type="text" class="form-control" name="alt3_p2" id="alt3_p2" readonly
-                value="{{ $pendaftaran->alt3_p2 }}">
-        </div>
-        <div class="col-md-6 p-2">
-            <h6 style="text-align:center;">Alternatif 4</h6>
-            <label for="alt4_p1" class="form-label">Pembimbing 1</label>
-            <input type="text" class="form-control" name="alt4_p1" id="alt4_p1" readonly
-                value="{{ $pendaftaran->alt4_p1 }}">
-            <label for="alt4_p2" class="form-label mt-2">Pembimbing 2</label>
-            <input type="text" class="form-control" name="alt4_p2" id="alt4_p2" readonly
-                value="{{ $pendaftaran->alt4_p2 }}">
-        </div>
+
         <div class="mt-4">
         </div>
 
@@ -274,9 +237,8 @@
                 <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
-                    <input type="hidden" id="status" name="status" value="Pending">
-                    <button type="submit" class="btn btn-danger mx-2"
-                        style="width: 10rem; height: 3rem;">Pending</button>
+
+
                 </form>
                 <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
@@ -298,9 +260,7 @@
                 <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
-                    <input type="hidden" id="status" name="status" value="Pending">
-                    <button type="submit" class="btn btn-danger mx-2"
-                        style="width: 10rem; height: 3rem;">Pending</button>
+
                 </form>
                 <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
@@ -322,9 +282,7 @@
                 <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
-                    <input type="hidden" id="status" name="status" value="Pending">
-                    <button type="submit" class="btn btn-danger mx-2"
-                        style="width: 10rem; height: 3rem;">Pending</button>
+
                 </form>
                 <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
@@ -346,9 +304,7 @@
                 <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
-                    <input type="hidden" id="status" name="status" value="Pending">
-                    <button type="submit" class="btn btn-danger mx-2 disabled"
-                        style="width: 10rem; height: 3rem;">Pending</button>
+
                 </form>
                 <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
@@ -370,9 +326,7 @@
                 <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
                     @method('put')
                     @csrf
-                    <input type="hidden" id="status" name="status" value="Pending">
-                    <button type="submit" class="btn btn-danger mx-2"
-                        style="width: 10rem; height: 3rem;">Pending</button>
+
                 </form>
                 <a class="btn btn-dark disabled"
                     href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos" role="button"

@@ -119,7 +119,7 @@ class ListPendaftaranTA1Controller extends Controller
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
         return view('koordinator.detail-mahasiswa', [
-            'title' => 'Pendaftaran TA 1',
+            'title' => 'Pendaftaran TA 2',
             'name' => 'Galang Setia Nugroho',
             'role' => 'Koordinator',
             'pendaftaran' => $pendaftaran,

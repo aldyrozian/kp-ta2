@@ -1,4 +1,4 @@
-@extends('layouts/main')
+@extends('layouts/main3')
 @section('container')
 <h2 class="text-center">{{ $title }}</h2>
 @if(session()->has('success'))

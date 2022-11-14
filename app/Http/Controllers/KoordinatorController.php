@@ -15,7 +15,6 @@ class KoordinatorController extends Controller
     {
         return view('koordinator.koordinator', [
             'title' => 'Home',
-            'name' => 'Galang Setia Nugroho',
             'role' => 'Koordinator'
         ]);
     }

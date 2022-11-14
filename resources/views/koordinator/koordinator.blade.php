@@ -4,6 +4,12 @@
 <h1 style="text-align:center;">Sistem Tugas Akhir 2</h1>
 
         <div class="d-flex justify-content-center">
+            <a class="btn my-3" href="/koordinator/plotting-dosen-reviewer2" role="button"
+                style="background-color:#ff8c1a; width: 20rem;">Plotting Dosen
+                Penguji</a>  
+        </div>             
+
+        <div class="d-flex justify-content-center">
             <a class="btn my-3" href="koordinator/list-pendaftaran-ta-1" role="button"
                 style="background-color:#ff8c1a; width: 20rem;">Pendaftaran Administrasi TA 2</a>
         </div>
@@ -31,7 +37,16 @@
                 style="background-color:#ff8c1a; width: 20rem;">Penilaian
                 Seminar</a>
         </div>
-
+        <div class="d-flex justify-content-center">
+                    <a class="btn my-3" href="/koordinator/plotting-dosen-reviewer" role="button"
+                        style="background-color:#ff8c1a; width: 20rem;">Plotting Dosen
+                        Reviewer</a>
+                </div>
+                <div class="d-flex justify-content-center">
+                            <a class="btn my-3" href="/koordinator/hasil-review-proposal" role="button"
+                                style="background-color:#ff8c1a; width: 20rem;">Hasil Review
+                                Proposal</a>
+                        </div>
 
 
 @endsection
