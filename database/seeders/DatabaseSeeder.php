@@ -444,5 +444,128 @@ class DatabaseSeeder extends Seeder
             'id' => '20',
             'dosen_id' => '20',
         ]);
+
+        //user
+        User::factory()->create([
+            'id' => '1',
+'role_id'=>'3',
+            'nim' => '412175878',
+    'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '2',
+'role_id'=>'3',
+            'nim' => '412180078',
+    'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '3',
+'role_id'=>'3',
+            'nim' => '412116459',
+    'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '4',
+'role_id'=>'3',
+            'nim' => '412111056',
+    'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '5',
+'role_id'=>'3',
+            'nim' => '412127670',
+    'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '6',
+'role_id'=>'3',
+            'nim' => '412105388',
+    'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '7',
+'role_id'=>'3',
+            'nim' => '412100992',
+    'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '8',
+'role_id'=>'3',
+            'nim' => '412185888',
+    'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '9',
+'role_id'=>'3',
+            'nim' => '412167079',
+    'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '10',
+ 'role_id'=>'3',
+                'nim'=> '412157175',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '11',
+ 'role_id'=>'3',
+                'nim'=> '412198688',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '12',
+ 'role_id'=>'3',
+                'nim'=> '412196490',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '13',
+ 'role_id'=>'3',
+                'nim'=> '412100879',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '14',
+ 'role_id'=>'3',
+                'nim'=> '412190585',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '15',
+ 'role_id'=>'3',
+                'nim'=> '412182990',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '16',
+ 'role_id'=>'3',
+                'nim'=> '412174182',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '17',
+ 'role_id'=>'3',
+                'nim'=> '412103969',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '18',
+ 'role_id'=>'3',
+                'nim'=> '412176273',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
+        User::factory()->create([
+            'id' => '19',
+ 'role_id'=>'3',
+                'nim'=> '412166969',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+
+        ]);
+        User::factory()->create([
+            'id' => '20',
+ 'role_id'=>'3',
+                'nim'=> '412166863',
+        'password' => '$2y$10$8eiEd3dsQca1YL7fDRE9IuI/ZQYDMxrrxA8KFcOS.N40l2KDGi3AK'
+        ]);
     }
 }

@@ -61,7 +61,7 @@ class PendaftaranController extends Controller
 
     public function step2()
     {
-        if (isset(auth()->user()->pendaftaran->alt4_p2)) {
+        if (isset(auth()->user()->pendaftaran->p2)) {
             return redirect()->intended('/mahasiswa/pendaftaran-ta-2/status');
         } else {
             $pendaftaran = auth()->user()->pendaftaran;
@@ -343,7 +343,7 @@ class PendaftaranController extends Controller
 //             'tagihan_uang' => $file['tagihan_uang'],
 //             'lunas_pembayaran' => $file['lunas_pembayaran'],
 //             'khs' => $file['khs'],
-//             'alt1_p1' => request('alt1_p1'),
+//             'p1' => request('p1'),
 //             'alt1_p2' => request('alt1_p2'),
 //             'alt2_p1' => request('alt2_p1'),
 //             'alt2_p2' => request('alt2_p2'),

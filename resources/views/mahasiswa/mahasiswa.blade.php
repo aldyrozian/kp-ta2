@@ -1,6 +1,6 @@
 @extends('layouts/main')
 @section('container')
-
+</main>
 @if(session()->has('gagal'))
 <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
     {{ session('gagal') }}
