@@ -13,7 +13,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        if (isset(auth()->user()->pendaftaran) && auth()->user()->pendaftaran->p1 == null) {
+        if (isset(auth()->user()->pendaftaran) && auth()->user()->pendaftaran->alt4_p2 == null) {
             $mahasiswa_id = auth()->user()->mahasiswa->id;
             $Pendaftaran = \App\Models\Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->first();
             $Pendaftaran->delete();

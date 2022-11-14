@@ -12,17 +12,24 @@ use Illuminate\Support\Facades\Storage;
 
 class ListPendaftaranTA1Controller extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $kuncipendaftaran = KunciPendaftaran::first();
-        $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->orderBy(Mahasiswa::select('name')->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'))->paginate(7)->withQueryString();
+        $list_pendaftaran = Pendaftaran::with('mahasiswa')->filter(request('search'));
+        if ($request->sortBy) {
+            $list_pendaftaran = $list_pendaftaran->orderBy(Mahasiswa::select($request->sortBy)->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'), $request->sortAsc);
+        }
+        $list_pendaftaran = $list_pendaftaran->paginate(7);
         return view(
             'koordinator.list-pendaftaran-ta-1',
             [
                 'title' => 'Pendaftaran Administrasi TA 2',
                 'role' => 'Koordinator',
                 'list_pendaftaran' => $list_pendaftaran,
-                'kuncipendaftaran' => $kuncipendaftaran
+                'kuncipendaftaran' => $kuncipendaftaran,
+                'sortBy' => $request->sortBy,
+                'sortAsc' => $request->sortAsc,
+                'search' => $request->search
             ]
         );
     }
@@ -275,7 +282,7 @@ class ListPendaftaranTA1Controller extends Controller
     public function exportPDF()
     {
         $kuncipendaftaran = KunciPendaftaran::first();
-        $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()
+        $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->filter(request('search'))
             ->orderBy(Mahasiswa::select('name')->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'))->paginate(100)->withQueryString();
         return view(
             'koordinator.list-pendaftaran-ta-1-printable',
@@ -291,8 +298,7 @@ class ListPendaftaranTA1Controller extends Controller
     public function viewProposal(Request $request, $id)
     {
         $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->khs}");
-        // dd("https://drive.google.com/viewerng/viewer?embedded=true&url=http://$filepath");
+        $filepath = "/storage/" . $data->khs;
         return view('koordinator.view', [
             'title' => 'View Berkas Proposal',
             'role' => 'Koordinator',

@@ -12,6 +12,7 @@ use App\Models\Mahasiswa;
 use App\Models\Reviewer1;
 use App\Models\Reviewer2;
 use App\Models\Koordinator;
+use App\Models\KunciPendaftaran;
 use App\Models\Pembimbing1;
 use App\Models\Pembimbing2;
 use App\Models\Pendaftaran;
@@ -52,6 +53,30 @@ class DatabaseSeeder extends Seeder
             'redirect_to' => '/tu',
         ]);
 
+        Jabfung::create([
+            'name' => 'Non Jabfung'
+        ]);
+
+        Jabfung::create([
+            'name' => 'Asisten Ahli'
+        ]);
+
+        Jabfung::create([
+            'name' => 'Lektor'
+        ]);
+
+        Jabfung::create([
+            'name' => 'Lektor Kepala'
+        ]);
+
+        Jabfung::create([
+            'name' => 'Guru Besar'
+        ]);
+
+        KunciPendaftaran::create([
+            'administrasi' => 1,
+            'seminar' => 1
+        ]);
         //pembimbing
         \App\Models\Dosen::factory()->create([
             'id' => '1',

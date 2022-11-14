@@ -247,7 +247,12 @@ class PendaftaranController extends Controller
             
         ]);
 
+        $pendaftaran_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->first()->id;
 
+        Review::create([
+            'mahasiswa_id' => auth()->user()->mahasiswa->id,
+            'pendaftaran_id' => $pendaftaran_id
+        ]);
 
 
 
@@ -270,22 +275,18 @@ class PendaftaranController extends Controller
 
     public function showSyarat()
     {
-        $formBimbingan = auth()->user()->mahasiswa->bimbingan;
         return view('mahasiswa.syarat-pendaftaran-ta-1', [
             'title' => 'Status Pendaftaran TA 1',
             'role' => 'Mahasiswa',
-            'formBimbingan' => $formBimbingan,
             'syarat' => auth()->user()->pendaftaran->keterangan_status
         ]);
     }
 
     public function showAlasan()
     {
-        $formBimbingan = auth()->user()->mahasiswa->bimbingan;
         return view('mahasiswa.syarat-pendaftaran-ta-1', [
             'title' => 'Status Pendaftaran TA 1',
             'role' => 'Mahasiswa',
-            'formBimbingan' => $formBimbingan,
             'syarat' => auth()->user()->pendaftaran->keterangan_status
         ]);
     }
@@ -358,5 +359,5 @@ class PendaftaranController extends Controller
 //             'pendaftaran_id' => $pendaftaran->id
 //         ]);
 
-//         return redirect()->intended('/mahasiswa/pendaftaran-ta-2/status');
+//         return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
 //     }

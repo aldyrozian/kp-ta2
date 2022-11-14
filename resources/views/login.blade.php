@@ -62,9 +62,9 @@
                         </div>
                         <div class=" form-group">
                             <button type="submit" class="btn btn-block create-account">Login</button>
-                            <!-- <div class="span">
+                            <div class="span">
                                 <span>Tidak punya akun? Daftar <a href="/register">di sini</a></span>
-                            </div> -->
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -78,7 +78,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
-            </div>
+    </div>
         </main>
 
 </body>

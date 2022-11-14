@@ -14,6 +14,8 @@
             <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"
                     value="{{ request('search') }}">
+                <input type="text" name="sortBy" value="{{ $sortBy }}" style="display:none">
+                <input type="text" name="sortAsc" value="{{ $sortAsc }}" style="display:none">
                 <div class=" input-group-append">
                     <button class="btn ms-3" type="submit" style="background-color:#ff8c1a;" "><i class=" fa-solid
                         fa-magnifying-glass "></i> Search</button>
@@ -52,34 +54,114 @@
                 <thead>
                     <tr>
                         <th scope="col">NO
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
                         </th>
                         <th scope="col">NIM
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                            @if ($sortAsc == 'ASC' && $sortBy == 'nim')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=nim&sortAsc={{$sortAsc=='ASC'&&$sortBy=='nim'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs "></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @elseif ($sortAsc == 'DESC' && $sortBy == 'nim')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=nim&sortAsc={{$sortAsc=='ASC'&&$sortBy=='nim'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs "></i>
+                                </span>
+                            </a>
+                            @else
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=nim&sortAsc={{$sortAsc=='ASC'&&$sortBy=='nim'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @endif
                         </th>
                         <th scope="col">Nama
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                            @if ($sortAsc == 'ASC' && $sortBy == 'name')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=name&sortAsc={{$sortAsc=='ASC'&&$sortBy=='name'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @elseif ($sortAsc == 'DESC' && $sortBy == 'name')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=name&sortAsc={{$sortAsc=='ASC'&&$sortBy=='name'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs"></i>
+                                </span>
+                            </a>
+                            @else
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=name&sortAsc={{$sortAsc=='ASC'&&$sortBy=='name'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @endif
                         </th>
                         <th scope="col">Peminatan
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                            @if ($sortAsc == 'ASC' && $sortBy == 'peminatan')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=peminatan&sortAsc={{$sortAsc=='ASC'&&$sortBy=='peminatan'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('peminatan')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @elseif ($sortAsc == 'ASC' && $sortBy == 'peminatan')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=peminatan&sortAsc={{$sortAsc=='ASC'&&$sortBy=='peminatan'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('peminatan')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs"></i>
+                                </span>
+                            </a>
+                            @else
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=peminatan&sortAsc={{$sortAsc=='ASC'&&$sortBy=='peminatan'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('peminatan')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @endif
                         </th>
                         <th scope="col">Status
-                            <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
-                                <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
-                                <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
-                            </span>
+                            @if ($sortAsc == 'ASC' && $sortBy == 'status')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=status&sortAsc={{$sortAsc=='ASC'&&$sortBy=='status'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @elseif ($sortAsc == 'DESC' && $sortBy == 'status')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=status&sortAsc={{$sortAsc=='ASC'&&$sortBy=='status'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs"></i>
+                                </span>
+                            </a>
+                            @else
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=status&sortAsc={{$sortAsc=='ASC'&&$sortBy=='status'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('name')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @endif
                         </th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -94,13 +176,16 @@
                         <td><button type="submit" class="btn
                             {{($pendaftaran->status == 'Lolos' ) ? 'btn-success' : '';}}
                             {{($pendaftaran->status == 'Lolos Bersyarat' ) ? 'btn-warning' : '';}}
+                            {{($pendaftaran->status == 'Pending' ) ? 'btn-danger' : '';}}
                             {{($pendaftaran->status == 'Tidak Lolos' ) ? 'btn-secondary' : '';}}
                             " style="width: 9rem; cursor:default; ">{{ $pendaftaran->status }}</button>
                         </td>
                         <td>
                             <a class="btn" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}"
                                 style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i> Detail</a>
-                            
+                            <!-- <a class="btn btn-warning"
+                                href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/edit"><i
+                                    class="fa-regular fa-pen-to-square"></i> Edit</a>
                             <form action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}" method="post"
                                 class="d-inline">
                                 @method('delete')
@@ -108,7 +193,7 @@
                                 <button class="btn btn-danger" role="button"
                                     onclick="return confirm('Apakah anda yakin?')"><i class="fa-solid fa-trash-can"></i>
                                     Delete</button>
-                            </form>
+                            </form> -->
                         </td>
                     </tr>
                 </tbody>

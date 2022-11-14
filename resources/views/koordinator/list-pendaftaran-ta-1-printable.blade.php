@@ -62,7 +62,6 @@
                             <button type="submit" class="btn btn-outline-light btn-sm" href="#">Logout</button>
                         </form>
                     </li>
-
                     @elseif (isset(auth()->user()->dosen))
                     <li class="nav-item">
                         <div class="keterangan mt-1 me-4 text-secondary" ">

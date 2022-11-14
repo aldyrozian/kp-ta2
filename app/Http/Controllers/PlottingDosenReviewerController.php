@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\Pendaftaran;
 use App\Models\Reviewer1;
 use Illuminate\Http\Request;
 
@@ -13,22 +14,35 @@ class PlottingDosenReviewerController extends Controller
      *scopeFilterR1
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $list_mahasiswa = \App\Models\Pendaftaran::with([
             "reviewer1" => function ($q) {
                 $q->with("dosen");
             },
             "mahasiswa"
-        ])->oldest()->whereHas('mahasiswa', function ($query) {
+        ])->whereHas('mahasiswa', function ($query) {
             $query->where('p1_id', '!=', null)->where('p2_id', '!=', null);
-        })->filterR1(request('search'))->paginate(7)->withQueryString();
+        })->filterR1(request('search'));
+        $sortBy = $request->sortBy;
+        $sortAsc = $request->sortAsc;
+        if ($sortBy) {
+            if ($request->sortBy == 'r1') {
+                $list_mahasiswa =  $list_mahasiswa->orderBy(Reviewer1::select('id')->whereColumn('reviewer1s.id', 'pendaftarans.r1_id'), $sortAsc);
+            } else {
+                $list_mahasiswa =  $list_mahasiswa->orderBy(Mahasiswa::select($request->sortBy)->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'), $request->sortAsc);
+            }
+        }
+        $list_mahasiswa = $list_mahasiswa->paginate(7)->withQueryString();
         return view(
             'koordinator.plotting-dosen-reviewer',
             [
                 'title' => 'Plotting Dosen Reviewer',
                 'role' => 'Koordinator',
-                'list_mahasiswa' => $list_mahasiswa
+                'list_mahasiswa' => $list_mahasiswa,
+                'sortBy' => $request->sortBy,
+                'sortAsc' => $request->sortAsc,
+                'search' => $request->search
             ]
         );
     }
@@ -114,10 +128,12 @@ class PlottingDosenReviewerController extends Controller
             'r1_id' =>  $r1_id
         ]);
 
-        $mahasiswa_id = \App\Models\Pendaftaran::where('id', '=', $id)->get()[0]->mahasiswa_id;
+        $mahasiswa_id = Pendaftaran::where('id', '=', $id)->get()[0]->mahasiswa_id;
+        $p1_id = Pendaftaran::where('id', '=', $id)->get()[0]->p1_id;
 
         \App\Models\Review::where('mahasiswa_id', $mahasiswa_id)->update([
-            'r1_id' =>  $r1_id
+            'r1_id' =>  $r1_id,
+            'p1_id' => $p1_id
         ]);
         return redirect('/koordinator/plotting-dosen-reviewer')->with('success', 'Plotting telah diperbarui!');
     }

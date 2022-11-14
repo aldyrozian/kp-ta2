@@ -11,7 +11,54 @@ class Pendaftaran extends Model
 
     protected $guarded = ['id'];
 
+    public function scopeFilter($query, $filters)
+    {
+        $query->when($filters ?? false, function ($query, $search) {
+            return $query->Where('peminatan', 'like', '%' .  $search . '%')
+                ->orWhere('status', 'like', '%' .  $search . '%')
+                ->orWhereHas('mahasiswa', function ($query) use ($search) {
+                    $query->where('nim', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%');
+                });
+        });
+    }
 
+    public function scopeFilterP1P2($query, $filters)
+    {
+        $query->when($filters ?? false, function ($query, $search) {
+            return $query->where('peminatan', 'like', '%' .  $search . '%')
+                ->orWhereHas('mahasiswa', function ($query) use ($search) {
+                    $query->where('nim', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('pembimbing1', function ($query) use ($search) {
+                    $query->whereHas('dosen', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    });;
+                })
+                ->orWhereHas('pembimbing2', function ($query) use ($search) {
+                    $query->whereHas('dosen', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    });;
+                });
+        });
+    }
+
+    public function scopeFilterR1($query, $filters)
+    {
+        $query->when($filters ?? false, function ($query, $search) {
+            return $query->where('peminatan', 'like', '%' .  $search . '%')
+                ->orWhereHas('mahasiswa', function ($query) use ($search) {
+                    $query->where('nim', 'like', '%' . $search . '%')
+                        ->orWhere('name', 'like', '%' . $search . '%');
+                })
+                ->orWhereHas('reviewer1', function ($query) use ($search) {
+                    $query->whereHas('dosen', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    });;
+                });
+        });
+    }
 
     public function scopeFilterAjuanPembimbing($query, $filters)
     {
