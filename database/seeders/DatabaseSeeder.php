@@ -53,25 +53,6 @@ class DatabaseSeeder extends Seeder
             'redirect_to' => '/tu',
         ]);
 
-        Jabfung::create([
-            'name' => 'Non Jabfung'
-        ]);
-
-        Jabfung::create([
-            'name' => 'Asisten Ahli'
-        ]);
-
-        Jabfung::create([
-            'name' => 'Lektor'
-        ]);
-
-        Jabfung::create([
-            'name' => 'Lektor Kepala'
-        ]);
-
-        Jabfung::create([
-            'name' => 'Guru Besar'
-        ]);
 
         KunciPendaftaran::create([
             'administrasi' => 1,
