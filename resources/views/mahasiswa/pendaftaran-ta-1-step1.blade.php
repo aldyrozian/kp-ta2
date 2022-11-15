@@ -10,10 +10,10 @@
 
 <div class="row align-items-start mt-3">
     @if ($seminar == '')
-    <form class="row g-3" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-2-step1" method="POST"
+    <form  id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-2-step1" method="POST"
         enctype="multipart/form-data">
         @else
-        <form class="row g-3" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1-step1" method="POST">
+        <form id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1-step1" method="POST">
             @endif
             @csrf
             @if ($pendaftaran != null)
