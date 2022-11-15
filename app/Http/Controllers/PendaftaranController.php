@@ -21,6 +21,7 @@ class PendaftaranController extends Controller
                 return redirect()->intended('/mahasiswa')->with('gagal', 'Maaf, pendaftaran sudah ditutup!');
             }
             $formBimbingan = auth()->user()->mahasiswa->bimbingan;
+            $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
             $list_p2 = \App\Models\Dosen::all();
             $pendaftaran = auth()->user()->pendaftaran;
             $angka_mutus = ['A', 'AB', 'B', 'BC', 'C', 'D', 'E', 'Belum Diambil'];
@@ -30,7 +31,7 @@ class PendaftaranController extends Controller
                 'name' => 'Lorem',
                 'role' => 'Mahasiswa',
                 'seminar' => '',
-                'list_p1' => $list_p2,
+                'list_p1' => $list_p1,
                 'list_p2' => $list_p2,
                 'pendaftaran' => $pendaftaran,
                 'formBimbingan' => $formBimbingan,
