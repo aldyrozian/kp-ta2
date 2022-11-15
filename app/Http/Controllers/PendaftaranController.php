@@ -373,9 +373,20 @@ class PendaftaranController extends Controller
 
     public function update()
     {
+        $file = request()->validate([
+            'khs' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
+        ]);
+        if (request()->file('khs')) {
+            $file['khs'] = request()->file('khs')->store('khs');
+        } else $file['khs'] = null;
         $mahasiswa_id = auth()->user()->pendaftaran->mahasiswa_id;
         $pendaftaran = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->update([
-            'phone_number' => request('phone_number'),
+            'ipk' => request('ipk'),
+            'jumlah_sks' => request('jumlah_sks'),
+            'jumlah_teori_d' => request('jumlah_teori_d'),
+            'jumlah_prak_d' => request('jumlah_prak_d'),
+            'jumlah_e' => request('jumlah_e'),
+            'khs' => $file['khs'],
             'peminatan' => request('peminatan'),
             'angkatan' => request('angkatan'),
             'status' => 'Pending'

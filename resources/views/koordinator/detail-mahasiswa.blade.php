@@ -1,9 +1,9 @@
-@extends('layouts/main')
+@extends('layouts/main3')
 @section('container')
 <h2 style="text-align:center;">Seleksi Administrasi</h2>
 
 <div class="row align-items-start mt-3">
-    <div class="row g-3">
+    <div>
         <div class="col-md-6">
             <label for="nim" class="form-label">NIM</label>
             <input type="number" class="form-control" name="nim" id="nim" readonly
@@ -27,98 +27,8 @@
                 value="{{ $pendaftaran->angkatan }}">
         </div>
 
-        <div class="col-md-6 ">
-            <div class="input-group">
-                <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
-                <div class="input-group-text">+62</div>
-                <input type="text" class="form-control" id="phone_number" name="phone_number" readonly
-                    value="{{ $pendaftaran->phone_number }}">
-            </div>
-        </div>
 
-        <div class="my-4">
-        </div>
-        <div class="col-md-3">
-            <label for="algo" class="form-label">Algoritma</label>
-            <input type="text" class="form-control {{
-                ($pendaftaran->algo != 'A' && 
-                $pendaftaran->algo != 'AB' &&
-                $pendaftaran->algo != 'B' &&
-                $pendaftaran->algo != 'BC' &&
-                $pendaftaran->algo != 'C') ? 'is-invalid' : ''; }}" name="algo" id="algo" readonly
-                value="{{ $pendaftaran->algo }}">
-        </div>
-        <div class="col-md-3">
-            <label for="stukdat" class="form-label">Struktur Data</label>
-            <input type="text" class="form-control {{
-                ($pendaftaran->strukdat != 'A' && 
-                $pendaftaran->strukdat != 'AB' &&
-                $pendaftaran->strukdat != 'B' &&
-                $pendaftaran->strukdat != 'BC' &&
-                $pendaftaran->strukdat != 'C') ? 'is-invalid' : ''; }}" name="stukdat" id="stukdat" readonly
-                value="{{ $pendaftaran->strukdat }}">
-        </div>
-        <div class="col-md-3">
-            <label for="basdat" class="form-label">Basis Data</label>
-            <input type="text" class="form-control {{
-                ($pendaftaran->basdat != 'A' && 
-                $pendaftaran->basdat != 'AB' &&
-                $pendaftaran->basdat != 'B' &&
-                $pendaftaran->basdat != 'BC' &&
-                $pendaftaran->basdat != 'C') ? 'is-invalid' : ''; }}" name="basdat" id="basdat" readonly
-                value="{{ $pendaftaran->basdat }}">
-        </div>
-        <div class="col-md-3">
-            <label for="rpl" class="form-label">Rekayasa Perangkat Lunak</label>
-            <input type="text" class="form-control {{
-                ($pendaftaran->rpl != 'A' && 
-                $pendaftaran->rpl != 'AB' &&
-                $pendaftaran->rpl != 'B' &&
-                $pendaftaran->rpl != 'BC' &&
-                $pendaftaran->rpl != 'C') ? 'is-invalid' : ''; }}" name="rpl" id="rpl" readonly
-                value="{{ $pendaftaran->rpl }}">
-        </div>
-        <div class="col-md-3">
-            <label for="metpen" class="form-label">Metode Penelitian</label>
-            <input type="text" class="form-control {{
-                ($pendaftaran->metpen != 'A' && 
-                $pendaftaran->metpen != 'AB' &&
-                $pendaftaran->metpen != 'B' &&
-                $pendaftaran->metpen != 'BC' &&
-                $pendaftaran->metpen != 'C') ? 'is-invalid' : ''; }}" name="metpen" id="metpen" readonly
-                value="{{ $pendaftaran->metpen }}">
-        </div>
-        <div class="my-4">
-        </div>
-        <div class="col-md-3">
-            <label for="pemweb" class="form-label">Pemrograman Web</label>
-            <input type="text" class="form-control {{($pendaftaran->pemweb == 'Belum Diambil' ) ? 'is-invalid' : ''; }}"
-                name="pemweb" id="pemweb" readonly value="{{ $pendaftaran->pemweb }}">
-        </div>
-        <div class="col-md-3">
-            <label for="prak_pemweb" class="form-label">Prak. Pemrograman Web</label>
-            <input type="text"
-                class="form-control {{($pendaftaran->prak_pemweb == 'Belum Diambil' ) ? 'is-invalid' : ''; }}"
-                name="prak_pemweb" id="prak_pemweb" readonly value="{{ $pendaftaran->prak_pemweb }}">
-        </div>
-        <div class="col-md-3">
-            <label for="po1" class="form-label">Pemrograman Objek 1</label>
-            <input type="text" class="form-control {{($pendaftaran->po1 == 'Belum Diambil' ) ? 'is-invalid' : ''; }}"
-                name="po1" id="po1" readonly value="{{ $pendaftaran->po1 }}">
-        </div>
-        <div class="col-md-3">
-            <label for="prak_po1" class="form-label">Prak. Pemrograman Objek 1</label>
-            <input type="text"
-                class="form-control {{($pendaftaran->prak_po1 == 'Belum Diambil' ) ? 'is-invalid' : ''; }}"
-                name="prak_po1" id="prak_po1" readonly value="{{ $pendaftaran->prak_po1 }}">
-        </div>
-        <div class="col-md-3">
-            <label for="appl" class="form-label">Analisis & Perancangan PL</label>
-            <input type="text" class="form-control {{($pendaftaran->appl == 'Belum Diambil' ) ? 'is-invalid' : ''; }}"
-                name="appl" id="appl" readonly value="{{ $pendaftaran->appl }}">
-        </div>
-        <div class="my-4">
-        </div>
+
         <div class="col-md-3">
             <label for="jumlah_teori_d" class="form-label">Jumlah SKS yang bernilai D (Teori)</label>
             <input type="text" class="form-control {{($pendaftaran->jumlah_teori_d > 6 ) ? 'is-invalid' : ''; }}"
@@ -147,7 +57,7 @@
         <div class="my-4">
         </div>
         @if ($pendaftaran->judul_ta1 != null)
-        <div class="col-md-12">
+        <div class="col-md-6">
             <label for="judul_ta1" class="form-label">Judul Proposal</label>
             <input type="text" class="form-control" name="judul_ta1" id="judul_ta1" readonly
                 value="{{ $pendaftaran->judul_ta1 }}">
@@ -207,13 +117,7 @@
             <label for="p2" class="form-label mt-2">Pembimbing 2</label>
             <input type="text" class="form-control" name="p2" id="p2" readonly value="{{ $pendaftaran->p2 }}">
         </div>
-        <div class="col-md-6 p-2">
-            <h6 style="text-align:center;">Penguji</h6>
-            <label for="u1" class="form-label">Penguji 1</label>
-            <input type="text" class="form-control" name="u1" id="u1" readonly value="{{ $pendaftaran->u1 }}">
-            <label for="u2" class="form-label mt-2">Penguji 2</label>
-            <input type="text" class="form-control" name="u2" id="u2" readonly value="{{ $pendaftaran->u2 }}">
-        </div>
+
 
         <div class="mt-4">
         </div>
@@ -231,15 +135,7 @@
                             style="width: 10rem; height: 3rem;">Lolos</button>
                     </form>
                 </div>
-                <a class="btn btn-warning"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
-                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
-                    @method('put')
-                    @csrf
 
-
-                </form>
                 <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
@@ -254,14 +150,7 @@
                             style="width: 10rem; height: 3rem;">Lolos</button>
                     </form>
                 </div>
-                <a class="btn btn-warning"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
-                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
-                    @method('put')
-                    @csrf
 
-                </form>
                 <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
@@ -276,14 +165,7 @@
                             style="width: 10rem; height: 3rem;">Lolos</button>
                     </form>
                 </div>
-                <a class="btn btn-warning disabled"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
-                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
-                    @method('put')
-                    @csrf
 
-                </form>
                 <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
@@ -298,14 +180,7 @@
                             style="width: 10rem; height: 3rem;">Lolos</button>
                     </form>
                 </div>
-                <a class="btn btn-warning"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
-                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
-                    @method('put')
-                    @csrf
 
-                </form>
                 <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
@@ -320,14 +195,7 @@
                             style="width: 10rem; height: 3rem;">Lolos</button>
                     </form>
                 </div>
-                <a class="btn btn-warning"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/lolos-bersyarat" role="button"
-                    style="width: 10rem; height: 3rem;">Lolos Bersyarat</a>
-                <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
-                    @method('put')
-                    @csrf
 
-                </form>
                 <a class="btn btn-dark disabled"
                     href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos" role="button"
                     style="width: 10rem; height: 3rem;">Tidak Lolos</a>

@@ -9,7 +9,7 @@
 <h2 style="text-align:center;">{{ $title }}</h2>
 
 <div class="row align-items-start mt-3">
-    <form class="row g-3" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-2/edit" method="POST"
+    <form id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-2/edit" method="POST"
         enctype="multipart/form-data">
             @csrf
             @if ($pendaftaran != null)
@@ -61,15 +61,6 @@
                 </select>
             </div>
 
-            <div class=" col-md-6 ">
-                <div class=" input-group">
-                    <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
-                    <div class="input-group-text">+62</div>
-                    <input type="number" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="81234567890" 
-                        value="{{ $pendaftaran->phone_number}}">
-                </div>
-            </div>
 
 
             @else
@@ -102,17 +93,40 @@
                     <option>2019</option>
                 </select>
             </div>
-
-            <div class="col-md-6 ">
-                <div class="input-group">
-                    <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
-                    <div class="input-group-text">+62</div>
-                    <input type="text" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="81234567890" >
-                </div>
-            </div>
-
             @endif
+@csrf
+</div>
+<div class="col-md-3">
+    <label for="jumlah_teori_d" class="form-label">Jumlah Nilai D (Teori)</label>
+    <input type="number" class="form-control" name="jumlah_teori_d" id="jumlah_teori_d" placeholder="0"
+        value="{{ $pendaftaran->jumlah_teori_d }}">
+</div>
+<div class="col-md-3">
+    <label for="jumlah_prak_d" class="form-label">Jumlah Nilai D (Prak)</label>
+    <input type="number" class="form-control" name="jumlah_prak_d" id="jumlah_prak_d" placeholder="0"
+        value="{{ $pendaftaran->jumlah_prak_d }}">
+</div>
+<div class="col-md-3">
+    <label for="jumlah_e" class="form-label">Jumlah Nilai E</label>
+    <input type="number" class="form-control" name="jumlah_e" id="jumlah_e" placeholder="0"
+        value="{{ $pendaftaran->jumlah_e }}">
+</div>
+<div class="col-md-3">
+    <label for="jumlah_sks" class="form-label">Jumlah SKS</label>
+    <input type="number" class="form-control" name="jumlah_sks" id="jumlah_sks" placeholder="138"
+        value="{{ $pendaftaran->jumlah_sks }}">
+</div>
+<div class="col-md-3">
+    <label for="ipk" class="form-label">IPK</label>
+    <input type="number" step="0.01" class="form-control" name="ipk" id="ipk" placeholder="3.10"
+        value="{{ $pendaftaran->ipk }}">
+</div>
+<div class="row mt-4">
+    <div class="col-md-5">
+        <label for="khs" class="form-label">Kartu Hasil Studi</label>
+        <input class="form-control" type="file" id="khs" name="khs">
+    </div>
+</div>
             <div class="col-12 mt-4">
                 <a class="btn " href="/mahasiswa" role="button" style="width: 5rem;background-color:#ff8c1a;">Back</a>
                 <button type="submit" class="btn" style="width: 5rem ; background-color:#ff8c1a;">Update</button>
