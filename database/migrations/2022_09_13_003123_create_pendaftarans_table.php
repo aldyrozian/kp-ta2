@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('p1_id')->nullable();
             $table->integer('p2_id')->nullable();
             $table->integer('r1_id')->nullable();
-            $table->string('phone_number')->nullable();
             $table->string('peminatan')->nullable();
             $table->integer('angkatan')->nullable();
             $table->timestamps();
@@ -32,16 +31,6 @@ return new class extends Migration
             $table->integer('jumlah_teori_d')->nullable();
             $table->integer('jumlah_prak_d')->nullable();
             $table->integer('jumlah_e')->nullable();
-            $table->string('algo')->nullable();
-            $table->string('strukdat')->nullable();
-            $table->string('basdat')->nullable();
-            $table->string('rpl')->nullable();
-            $table->string('metpen')->nullable();
-            $table->string('pemweb')->nullable();
-            $table->string('prak_pemweb')->nullable();
-            $table->string('po1')->nullable();
-            $table->string('prak_po1')->nullable();
-            $table->string('appl')->nullable();
             $table->string('tagihan_uang')->nullable();
             $table->string('lunas_pembayaran')->nullable();
             $table->string('khs')->nullable();
