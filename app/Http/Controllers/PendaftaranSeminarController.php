@@ -88,7 +88,7 @@ class PendaftaranSeminarController extends Controller
             'status' => ''
         ]);
 
-        return redirect()->intended('/mahasiswa/pendaftaran-seminar-ta-1/status');
+        return redirect()->intended('/mahasiswa');
     }
 
     public function status()

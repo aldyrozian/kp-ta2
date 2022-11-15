@@ -20,8 +20,7 @@ class PlottingDosenReviewer2Controller extends Controller
                 $q->with("dosen");
             },
             "mahasiswa"
-        ])->where('r1_id', '!=', null)->where('status', 'Lolos')->orWhere('status', 'Lolos Bersyarat')
-            ->filterR2(request('search'));
+        ])->filterR2(request('search'));
 
         $sortBy = $request->sortBy;
         $sortAsc = $request->sortAsc;
@@ -51,6 +50,7 @@ class PlottingDosenReviewer2Controller extends Controller
 
     public function show($id)
     {
+        
         $pendaftarans = \App\Models\PendaftaranSeminar::get();
         $mahasiswa = \App\Models\PendaftaranSeminar::with('mahasiswa')->find($id);
         $list_dosen = \App\Models\Dosen::with('reviewer2')->paginate(4);

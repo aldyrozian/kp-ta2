@@ -81,6 +81,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Pendaftaran Administrasi TA 1
 
+        Route::get('/mahasiswa/pendaftaran-ta-2/edit', [PendaftaranController::class, 'edit']);
+        Route::post('/mahasiswa/pendaftaran-ta-2/edit', [PendaftaranController::class, 'update']);
         Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
         Route::get('/mahasiswa/pendaftaran-ta-2/status', [PendaftaranController::class, 'status']);
         Route::get('/mahasiswa/pendaftaran-ta-2/status/syarat', [PendaftaranController::class, 'showSyarat']);

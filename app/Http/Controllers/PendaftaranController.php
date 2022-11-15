@@ -100,18 +100,25 @@ class PendaftaranController extends Controller
             'jumlah_teori_d' => request('jumlah_teori_d'),
             'jumlah_prak_d' => request('jumlah_prak_d'),
             'jumlah_e' => request('jumlah_e'),
-            'algo' => request('algo'),
-            'strukdat' => request('strukdat'),
-            'basdat' => request('basdat'),
-            'rpl' => request('rpl'),
-            'metpen' => request('metpen'),
-            'pemweb' => request('pemweb'),
-            'prak_pemweb' => request('prak_pemweb'),
-            'po1' => request('po1'),
-            'prak_po1' => request('prak_po1'),
-            'appl' => request('appl'),
             'khs' => $file['khs']
         ]);
+        
+
+        // Menentukan kelolosan dan kketerangan kelolosan
+         $ketTidakLolos = '';
+        if($request['jumlah_e'] > 0 || $request['jumlah_teori_d'] >= 14){
+            if ($request['jumlah_teori_d'] >= 14){
+                $ketTidakLolos = $ketTidakLolos . 'Nilai d lebih dari 13<br>';
+            }if ($request['jumlah_sks'] < 140){
+                $ketTidakLolos = $ketTidakLolos . 'Jumlah sks kurang dari 140<br>';
+            }if ($request['jumlah_e'] >= 1) {
+                $ketTidakLolos = $ketTidakLolos . 'Terdapat nilai E<br>';
+            }
+            Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->update([
+                'status' => 'Tidak Lolos' ,
+                'keterangan_status' => $ketTidakLolos,
+            ]);
+        }
 
         return redirect()->intended('/mahasiswa/pendaftaran-ta-2-step3');
     }
@@ -247,6 +254,31 @@ class PendaftaranController extends Controller
             'formBimbingan' => $formBimbingan,
             'status' => auth()->user()->pendaftaran->status
         ]);
+    }
+
+    public function edit()
+    {
+        $formBimbingan = auth()->user()->mahasiswa->bimbingan;
+        $pendaftaran = auth()->user()->pendaftaran;
+        return view('mahasiswa.update-pendaftaran', [
+            'title' => 'Edit Pendaftaran',
+            'name' => 'Lorem Name',
+            'role' => 'Mahasiswa',
+            'pendaftaran' => $pendaftaran,
+            'formBimbingan' => $formBimbingan,
+        ]);
+    }
+
+    public function update()
+    {
+        $mahasiswa_id = auth()->user()->pendaftaran->mahasiswa_id;
+        $pendaftaran = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->update([
+            'phone_number' => request('phone_number'),
+            'peminatan' => request('peminatan'),
+            'angkatan' => request('angkatan'),
+            'status' => 'Pending'
+        ]);
+        return redirect()->intended('/mahasiswa/pendaftaran-ta-2/status');
     }
 
     public function showSyarat()

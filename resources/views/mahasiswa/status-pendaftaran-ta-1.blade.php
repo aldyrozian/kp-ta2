@@ -1,6 +1,5 @@
 @extends('layouts/main2')
 @section('container')
-
 <h2 style="text-align:center;">Status Pendaftaran TA 2</h2>
 <div class="row">
     <div class="d-flex justify-content-center mt-5">
@@ -72,6 +71,8 @@
     @elseif ($status == 'Tidak Lolos')
     <a href="/mahasiswa/pendaftaran-ta-2/status/alasan-tidak-lolos" class="btn mx-2"
         style="background-color:#ff8c1a;">Alasan</a>
+        <a href="/mahasiswa/pendaftaran-ta-2/edit" class="btn mx-2"
+            style="background-color:#ff8c1a;">Update</a>
     @endif
 </div>
 @endsection

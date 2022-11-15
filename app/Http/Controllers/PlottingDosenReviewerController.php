@@ -21,9 +21,7 @@ class PlottingDosenReviewerController extends Controller
                 $q->with("dosen");
             },
             "mahasiswa"
-        ])->whereHas('mahasiswa', function ($query) {
-            $query->where('p1_id', '!=', null)->where('p2_id', '!=', null);
-        })->filterR1(request('search'));
+        ])->filterR1(request('search'));
         $sortBy = $request->sortBy;
         $sortAsc = $request->sortAsc;
         if ($sortBy) {

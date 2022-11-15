@@ -18,17 +18,23 @@ class MahasiswaController extends Controller
             $Pendaftaran = \App\Models\Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->first();
             $Pendaftaran->delete();
         }
+        $jumlah_bimbingans = \App\Models\ListBimbingan::with('bimbingan')->oldest()->whereHas('bimbingan', function ($query) {
+        // $query->where('id', auth()->user()->bimbingan->id);
+        })->count();
         $pendaftaran = auth()->user()->mahasiswa->pendaftaran;
         $hasilReview = auth()->user()->mahasiswa->review;
         $formBimbingan = auth()->user()->mahasiswa->bimbingan;
         $pendaftaranSeminar = auth()->user()->mahasiswa->pendaftaranseminar;
+
+        // dd($jumlah_bimbingans);
         return view('mahasiswa.mahasiswa', [
             'title' => 'Home',
             'role' => 'Mahasiswa',
             'pendaftaran' => $pendaftaran,
             'hasilReview' => $hasilReview,
             'formBimbingan' => $formBimbingan,
-            'pendaftaranSeminar' => $pendaftaranSeminar
+            'pendaftaranSeminar' => $pendaftaranSeminar,
+            'jumlah_bimbingans' => $jumlah_bimbingans
         ]);
     }
 
