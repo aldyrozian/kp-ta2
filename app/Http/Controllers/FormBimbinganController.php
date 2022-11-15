@@ -18,7 +18,7 @@ class FormBimbinganController extends Controller
             'mahasiswa.form-bimbingan',
             [
                 'title' => 'Form Bimbingan',
-                'name' => 'Fahmi Yusron Fiddin',
+                'name' => 'Lorem',
                 'role' => 'Mahasiswa',
                 'bimbingans' => $bimbingans
             ]
@@ -31,7 +31,7 @@ class FormBimbinganController extends Controller
             'mahasiswa.isian-form-bimbingan',
             [
                 'title' => 'Form Bimbingan',
-                'name' => 'Fahmi Yusron Fiddin',
+                'name' => 'Lorem',
                 'role' => 'Mahasiswa',
                 'bimbingan_ke' => null
             ]
@@ -40,17 +40,26 @@ class FormBimbinganController extends Controller
 
     public function store(Request $request)
     {
+        $file = request()->validate([
+            'berkas_bim' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
+        ]);
+        if (request()->file('berkas_bim')) {
+            $file['berkas_bim'] = request()->file('berkas_bim')->store('berkas_bim');
+        } else $file['berkas_bim'] = null;
+
         if ($request['pembahasan_bimbingan'] == null) {
             return redirect()->back()->with('gagal', 'Mohon isi pembahasan bimbingan!');
-        }
+        } else {
         $is_p1 = self::isP1($request->is_p1);
         ListBimbingan::with('bimbingan')->create([
             'bimbingan_id' => auth()->user()->bimbingan->id,
             'waktu' => $request->tanggal_waktu,
+            'berkas_bukti' => $file['berkas_bim'],
             'pokok_materi' => $request->pokok_materi,
             'pembahasan' => $request->pembahasan_bimbingan,
             'is_p1' => $is_p1
         ]);
+        }
         return redirect('/mahasiswa/form-bimbingan')->with('success', 'Form bimbimgan baru telah ditambahkan!');
     }
 

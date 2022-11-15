@@ -13,7 +13,7 @@
 @endif
 
 @if($bimbingan_ke == null)
-<form class="row my-2" action="/mahasiswa/form-bimbingan/create" method="POST">
+<form class="row my-2" action="/mahasiswa/form-bimbingan/create" method="POST" enctype="multipart/form-data">
     @else
     <form class="row my-2" action="/mahasiswa/form-bimbingan/{{$bimbingan_ke}}" method="POST">
         @method('put')
@@ -53,6 +53,12 @@
                 <trix-editor input="pembahasan_bimbingan"></trix-editor>
             </div>
         </div>
+                    <div class="row mt-4">
+                        <div class="col-md-5">
+                            <label for="berkas_bim" class="form-label">Bukti Bimbingan</label>
+                            <input class="form-control" type="file" id="berkas_bim" name="berkas_bim">
+                        </div>
+                    </div>        
         <div class="col-12 mt-5">
             <a class="btn " href="/mahasiswa/form-bimbingan" role="button"
                 style="width: 5rem;background-color:#ff8c1a;">Back</a>
