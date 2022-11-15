@@ -55,6 +55,7 @@ class PlottingDosenReviewer2Controller extends Controller
         $mahasiswa = \App\Models\PendaftaranSeminar::with('mahasiswa')->find($id);
         $list_dosen = \App\Models\Dosen::with('reviewer2')->paginate(4);
         $list_reviewer2 = Reviewer2::get();
+        $list_reviewer1 = Reviewer1::get();
         return view(
             'koordinator.isian-plotting-dosen-reviewer2',
             [
@@ -63,6 +64,7 @@ class PlottingDosenReviewer2Controller extends Controller
                 'plotting_dosen' => 'Reviewer',
                 'mahasiswa' => $mahasiswa,
                 'list_r2' => $list_reviewer2,
+                'list_r1' => $list_reviewer1,
                 'list_dosen' => $list_dosen,
                 'pendaftarans' => $pendaftarans
             ]
@@ -71,6 +73,7 @@ class PlottingDosenReviewer2Controller extends Controller
 
     public function update(Request $request, $id)
     {
+
         $mahasiswa_id = PendaftaranSeminar::where('id', '=', $id)->get()[0]->mahasiswa_id;
 
         $r2Value = request('r2');
@@ -82,9 +85,6 @@ class PlottingDosenReviewer2Controller extends Controller
 
         $r2_id = Reviewer2::where('dosen_id', $dosen_id)->get()[0]->id;
 
-        if (Reviewer2::where('id', $r2_id)->first()->dosen->name == PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->reviewer1->dosen->name) {
-            return redirect()->back()->with('gagal', 'Reviwer 2 tidak boleh sama dengan Reviewer 1!');
-        }
         PendaftaranSeminar::where('id', $id)->update([
             'r2_id' =>  $r2_id
         ]);
@@ -92,6 +92,26 @@ class PlottingDosenReviewer2Controller extends Controller
         $r1_id = PendaftaranSeminar::where('id', '=', $id)->get()[0]->r1_id;
         $p1_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->get()[0]->p1_id;
         $p2_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->get()[0]->p2_id;
+
+        //sada
+        $r1Value = request('r1');
+        $pos_r1 = strpos($r1Value, "(");
+        $r1Value = substr($r1Value, 0, $pos_r1 - 1);
+
+
+        $dosen_id = \App\Models\Dosen::where('name', '=', $r1Value)->get()[0]->id;
+
+        $r1_id = Reviewer1::where('dosen_id', $dosen_id)->get()[0]->id;
+
+        PendaftaranSeminar::where('id', $id)->update([
+            'r1_id' =>  $r1_id
+        ]);
+
+        $r2_id = PendaftaranSeminar::where('id', '=', $id)->get()[0]->r1_id;
+        $p1_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->get()[0]->p1_id;
+        $p2_id = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->get()[0]->p2_id;
+        //
+
 
         if (PenilaianSeminar::where('mahasiswa_id', $mahasiswa_id)->first() == null) {
             PenilaianSeminar::create([

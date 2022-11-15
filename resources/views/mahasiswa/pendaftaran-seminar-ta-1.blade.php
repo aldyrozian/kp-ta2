@@ -1,4 +1,4 @@
-@extends('layouts/main')
+@extends('layouts/main2')
 @section('container')
 @if (session()->has('ajuanPembimbingNotValid'))
 <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
@@ -10,10 +10,10 @@
 
 <div class="row align-items-start mt-3">
     @if ($seminar == '')
-    <form class="row g-3" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-1" method="POST"
+    <form class="" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-1" method="POST"
         enctype="multipart/form-data">
         @else
-        <form class="row g-3" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1" method="POST"
+        <form class="" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1" method="POST"
             enctype="multipart/form-data">
             @endif
             @csrf
@@ -21,20 +21,6 @@
                 <label for="nim" class="form-label">NIM</label>
                 <input type="number" class="form-control" name="nim" id="nim"
                     value="{{ auth()->user()->mahasiswa->nim }}" disabled>
-            </div>
-            <div class="col-md-6">
-                <label for="gender" class="form-label">Jenis Kelamin</label>
-                <select type="text" class="form-select" name="gender" id="gender">
-                    @if (auth()->user()->pendaftaran->gender == "Laki-laki")
-                    <option disabled>Pilih...</option>
-                    <option selected>Laki-laki</option>
-                    <option>Perempuan</option>
-                    @elseif (auth()->user()->pendaftaran->gender == "Perempuan")
-                    <option disabled>Pilih...</option>
-                    <option>Laki-laki</option>
-                    <option selected>Perempuan</option>
-                    @endif
-                </select>
             </div>
             <div class="col-md-6">
                 <label for="name" class="form-label">Nama Lengkap</label>
@@ -54,11 +40,6 @@
                     <option selected>DSE</option>
                     @endif
                 </select>
-            </div>
-            <div class="col-md-6">
-                <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir"
-                    value="{{ auth()->user()->pendaftaran->tempat_lahir }}">
             </div>
             <div class="col-md-6">
                 <label for="angkatan" class="form-label">Angkatan</label>
@@ -90,166 +71,6 @@
                     @endif
                 </select>
             </div>
-            <div class="col-md-6">
-                <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir"
-                    value="{{ auth()->user()->pendaftaran->tanggal_lahir }}">
-            </div>
-            <div class="col-md-6 ">
-                <div class="input-group">
-                    <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
-                    <div class="input-group-text">+62</div>
-                    <input type="text" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="81234567890" value="{{ auth()->user()->pendaftaran->phone_number }}">
-                </div>
-            </div>
-            <div class="col-md-12">
-                <label for="address" class="form-label">Alamat</label>
-                <input type="text" class="form-control" name="address" id="address" placeholder="Alamat"
-                    value="{{ auth()->user()->pendaftaran->address }}">
-            </div>
-
-
-
-            <div class="my-4">
-
-            </div>
-
-
-
-            <div class="col-md-3">
-                <label for="algo" class="form-label">Algoritma</label>
-                <select type="text" class="form-select" name="algo" id="algo">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($angka_mutus as $angka_mutu)
-                    @if(auth()->user()->pendaftaran->algo == $angka_mutu)
-                    <option selected>{{$angka_mutu}}</option>
-                    @endif
-                    <option>{{$angka_mutu}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="strukdat" class="form-label">Struktur Data</label>
-                <select type="text" class="form-select" name="strukdat" id="strukdat">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($angka_mutus as $angka_mutu)
-                    @if(auth()->user()->pendaftaran->strukdat == $angka_mutu)
-                    <option selected>{{$angka_mutu}}</option>
-                    @endif
-                    <option>{{$angka_mutu}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="basdat" class="form-label">Basis Data</label>
-                <select type="text" class="form-select" name="basdat" id="basdat">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($angka_mutus as $angka_mutu)
-                    @if(auth()->user()->pendaftaran->basdat == $angka_mutu)
-                    <option selected>{{$angka_mutu}}</option>
-                    @endif
-                    <option>{{$angka_mutu}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="rpl" class="form-label">Rekayasa Perangkat Lunak</label>
-                <select type="text" class="form-select" name="rpl" id="rpl">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($angka_mutus as $angka_mutu)
-                    @if(auth()->user()->pendaftaran->rpl == $angka_mutu)
-                    <option selected>{{$angka_mutu}}</option>
-                    @endif
-                    <option>{{$angka_mutu}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="metpen" class="form-label">Metode Penelitian</label>
-                <select type="text" class="form-select" name="metpen" id="metpen">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($angka_mutus as $angka_mutu)
-                    @if(auth()->user()->pendaftaran->metpen == $angka_mutu)
-                    <option selected>{{$angka_mutu}}</option>
-                    @endif
-                    <option>{{$angka_mutu}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="mt-4">
-
-            </div>
-            <div class="col-md-3">
-                <label for="pemweb" class="form-label">Pemrograman Web</label>
-                <select type="text" class="form-select" name="pemweb" id="pemweb">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($status_matkuls as $status_matkul)
-                    @if(auth()->user()->pendaftaran->pemweb == $status_matkul)
-                    <option selected>{{$status_matkul}}</option>
-                    @else
-                    <option>{{$status_matkul}}</option>
-                    @endif
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="prak_pemweb" class="form-label">Prak. Pemrograman Web</label>
-                <select type="text" class="form-select" name="prak_pemweb" id="prak_pemweb">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($status_matkuls as $status_matkul)
-                    @if(auth()->user()->pendaftaran->prak_pemweb == $status_matkul)
-                    <option selected>{{$status_matkul}}</option>
-                    @else
-                    <option>{{$status_matkul}}</option>
-                    @endif
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="po1" class="form-label">Pemrograman Objek 1</label>
-                <select type="text" class="form-select" name="po1" id="po1">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($status_matkuls as $status_matkul)
-                    @if(auth()->user()->pendaftaran->po1 == $status_matkul)
-                    <option selected>{{$status_matkul}}</option>
-                    @else
-                    <option>{{$status_matkul}}</option>
-                    @endif
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="prak_po1" class="form-label">Prak. Pemrograman Objek 1</label>
-                <select type="text" class="form-select" name="prak_po1" id="prak_po1">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($status_matkuls as $status_matkul)
-                    @if(auth()->user()->pendaftaran->prak_po1 == $status_matkul)
-                    <option selected>{{$status_matkul}}</option>
-                    @else
-                    <option>{{$status_matkul}}</option>
-                    @endif
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label for="appl" class="form-label">Analisis & Perancangan PL</label>
-                <select type="text" class="form-select" name="appl" id="appl">
-                    <option disabled selected>Pilih.. </option>
-                    @foreach ($status_matkuls as $status_matkul)
-                    @if(auth()->user()->pendaftaran->appl == $status_matkul)
-                    <option selected>{{$status_matkul}}</option>
-                    @else
-                    <option>{{$status_matkul}}</option>
-                    @endif
-                    @endforeach
-                </select>
-            </div>
-
-
-            <div class="my-4">
-
-            </div>
 
 
 
@@ -279,18 +100,16 @@
                     value="{{ auth()->user()->pendaftaran->ipk }}">
             </div>
 
-            <div class="my-4">
 
-            </div>
 
             <div class="col-md-12">
-                <label for="judul_ta1" class="form-label">Judul Proposal</label>
+                <label for="judul_ta1" class="form-label">Judul Penelitian</label>
                 <input type="text" class="form-control error" name="judul_ta1" id="judul_ta1"
                     placeholder="Judul Penelitian">
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
-                    <label for="berkas_ta1" class="form-label">Berkas Proposal</label>
+                    <label for="berkas_ta1" class="form-label">Berkas Penelitian</label>
                     <input class="form-control" type="file" id="berkas_ta1" name="berkas_ta1">
                 </div>
             </div>

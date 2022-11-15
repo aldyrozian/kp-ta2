@@ -12,7 +12,7 @@ class PendaftaranSeminarController extends Controller
     {
         $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
         $list_p2 = \App\Models\Dosen::all();
-
+        $formBimbingan = auth()->user()->mahasiswa->bimbingan;
         $angka_mutus = ['A', 'AB', 'B', 'BC', 'C', 'D', 'E', 'Belum Diambil'];
         $status_matkuls = ['Sudah Selesai', 'Sedang Diambil', 'Belum Diambil'];
 
@@ -23,6 +23,7 @@ class PendaftaranSeminarController extends Controller
             return view('mahasiswa.pendaftaran-seminar-ta-1', [
                 'title' => 'Pendaftaran Seminar TA 1',
                 'role' => 'Mahasiswa',
+                'formBimbingan' => $formBimbingan,
                 'seminar' => ' Seminar ',
                 'list_p1' => $list_p1,
                 'list_p2' => $list_p2,
@@ -58,11 +59,6 @@ class PendaftaranSeminarController extends Controller
 
         $pendaftaran = PendaftaranSeminar::where('mahasiswa_id', auth()->user()->mahasiswa->id)->update([
             'r1_id' => auth()->user()->pendaftaran->r1_id,
-            'tempat_lahir' => request('tempat_lahir'),
-            'tanggal_lahir' => request('tanggal_lahir'),
-            'gender' => request('gender'),
-            'phone_number' => request('phone_number'),
-            'address' => request('address'),
             'peminatan' => request('peminatan'),
             'angkatan' => request('angkatan'),
             'ipk' => request('ipk'),
@@ -70,16 +66,6 @@ class PendaftaranSeminarController extends Controller
             'jumlah_teori_d' => request('jumlah_teori_d'),
             'jumlah_prak_d' => request('jumlah_prak_d'),
             'jumlah_e' => request('jumlah_e'),
-            'algo' => request('algo'),
-            'strukdat' => request('strukdat'),
-            'basdat' => request('basdat'),
-            'rpl' => request('rpl'),
-            'metpen' => request('metpen'),
-            'pemweb' => request('pemweb'),
-            'prak_pemweb' => request('prak_pemweb'),
-            'po1' => request('po1'),
-            'prak_po1' => request('prak_po1'),
-            'appl' => request('appl'),
             'judul_ta1' => request('judul_ta1'),
             'berkas_ta1' => $file['berkas_ta1'],
             'tagihan_uang' => $file['tagihan_uang'],
@@ -93,8 +79,10 @@ class PendaftaranSeminarController extends Controller
 
     public function status()
     {
+        $formBimbingan = auth()->user()->mahasiswa->bimbingan;
         return view('mahasiswa.status-pendaftaran-seminar-ta-1', [
             'title' => 'Status Pendaftaran Seminar TA 1',
+            'formBimbingan' => $formBimbingan,
             'role' => 'Mahasiswa',
             'status' => auth()->user()->pendaftaranseminar->status
         ]);
