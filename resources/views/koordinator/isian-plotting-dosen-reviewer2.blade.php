@@ -6,7 +6,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-<h2 class="text-center">Plotting Dosen Reviewer 2</h2>
+<h2 class="text-center">Dosen Penguji</h2>
 
 <div class="row align-items-start">
     <div class="row g-3">
