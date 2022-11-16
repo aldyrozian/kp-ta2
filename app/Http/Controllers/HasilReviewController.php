@@ -109,7 +109,7 @@ class HasilReviewController extends Controller
             } else {
                 return response()->download($filepath);
             }
-        } else return back()->with('null', 'Proposal yang telah direview belum dirilis oleh Koordinator TA 1');
+        } else return back()->with('null', 'Proposal yang telah direview belum dirilis oleh Koordinator TA 2');
     }
 
     public function downloadProposalReviewedR1($id)
@@ -129,6 +129,6 @@ class HasilReviewController extends Controller
             } else {
                 return response()->download($filepath);
             }
-        } else return back()->with('null', 'Proposal yang telah direview belum dirilis oleh Koordinator TA 1');
+        } else return back()->with('null', 'Proposal yang telah direview belum dirilis oleh Koordinator TA 2');
     }
 }

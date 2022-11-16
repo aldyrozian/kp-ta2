@@ -16,7 +16,7 @@ class TUPendaftaranAdministrasiController extends Controller
         return view(
             'tu.list-pendaftaran-ta-1',
             [
-                'title' => 'Pendaftaran Administrasi TA 1',
+                'title' => 'Pendaftaran Administrasi TA 2',
                 'role' => 'Tata Usaha',
                 'list_pendaftaran' => $list_pendaftaran
             ]
@@ -27,7 +27,7 @@ class TUPendaftaranAdministrasiController extends Controller
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
         return view('tu.catatan', [
-            'title' => 'Pendaftaran TA 1',
+            'title' => 'Pendaftaran TA 2',
             'role' => 'Tata Usaha',
             'status_kelolosan' => $kelolosan,
             'pendaftaran' => $pendaftaran
@@ -179,7 +179,7 @@ class TUPendaftaranAdministrasiController extends Controller
     {
         $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
         return view('tu.detail-mahasiswa', [
-            'title' => 'Pendaftaran TA 1',
+            'title' => 'Pendaftaran TA 2',
             'name' => 'Galang Setia Nugroho',
             'role' => 'Tata Usaha',
             'pendaftaran' => $pendaftaran,

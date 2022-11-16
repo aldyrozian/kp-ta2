@@ -21,7 +21,7 @@ class PendaftaranSeminarController extends Controller
                 return redirect()->intended('/mahasiswa')->with('gagal', 'Maaf, pendaftaran seminar sudah ditutup!');
             }
             return view('mahasiswa.pendaftaran-seminar-ta-1', [
-                'title' => 'Pendaftaran Seminar TA 1',
+                'title' => 'Pendaftaran Seminar TA 2',
                 'role' => 'Mahasiswa',
                 'formBimbingan' => $formBimbingan,
                 'seminar' => ' Seminar ',
@@ -81,7 +81,7 @@ class PendaftaranSeminarController extends Controller
     {
         $formBimbingan = auth()->user()->mahasiswa->bimbingan;
         return view('mahasiswa.status-pendaftaran-seminar-ta-1', [
-            'title' => 'Status Pendaftaran Seminar TA 1',
+            'title' => 'Status Pendaftaran Seminar TA 2',
             'formBimbingan' => $formBimbingan,
             'role' => 'Mahasiswa',
             'status' => auth()->user()->pendaftaranseminar->status
@@ -91,7 +91,7 @@ class PendaftaranSeminarController extends Controller
     public function showSyarat()
     {
         return view('mahasiswa.syarat-pendaftaran-seminar-ta-1', [
-            'title' => 'Status Pendaftaran Seminar TA 1',
+            'title' => 'Status Pendaftaran Seminar TA 2',
             'role' => 'Mahasiswa',
             'syarat' => auth()->user()->pendaftaranseminar->keterangan_status
         ]);
@@ -100,7 +100,7 @@ class PendaftaranSeminarController extends Controller
     public function showAlasan()
     {
         return view('mahasiswa.syarat-pendaftaran-seminar-ta-1', [
-            'title' => 'Status Pendaftaran Seminar TA 1',
+            'title' => 'Status Pendaftaran Seminar TA 2',
             'role' => 'Mahasiswa',
             'syarat' => auth()->user()->pendaftaranseminar->keterangan_status
         ]);

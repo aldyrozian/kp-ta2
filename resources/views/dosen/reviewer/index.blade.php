@@ -15,12 +15,12 @@
 <div class="d-flex justify-content-center">
     <a class="btn my-3 
     " href="/dosen/downloadJadwalSeminar" role="button" style="background-color:#ff8c1a; width: 20rem;">Jadwal Seminar
-        TA 1</a>
+        TA 2</a>
 </div>
 <div class="d-flex justify-content-center">
     <a class="btn my-3
     " href="/dosen/reviewer-1/penilaian-seminar" role="button"
-        style="background-color:#ff8c1a; width: 20rem;">Penilaian Seminar TA 1</a>
+        style="background-color:#ff8c1a; width: 20rem;">Penilaian Seminar TA 2</a>
 </div>
 @else
 @if (session()->has('gagal'))
@@ -34,12 +34,12 @@
 <div class="d-flex justify-content-center mt-5">
     <a class="btn my-3 
     " href="/dosen/downloadJadwalSeminar" role="button" style="background-color:#ff8c1a; width: 20rem;">Jadwal Seminar
-        TA 1</a>
+        TA 2</a>
 </div>
 <div class="d-flex justify-content-center">
     <a class="btn my-3
     " href="/dosen/reviewer-2/penilaian-seminar" role="button"
-        style="background-color:#ff8c1a; width: 20rem;">Penilaian Seminar TA 1</a>
+        style="background-color:#ff8c1a; width: 20rem;">Penilaian Seminar TA 2</a>
 </div>
 @endif
 <div class="position-relative">

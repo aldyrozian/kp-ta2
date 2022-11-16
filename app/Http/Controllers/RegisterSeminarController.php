@@ -16,7 +16,7 @@ class RegisterSeminarController extends Controller
         return view(
             'm-pendaftaran-ta-1',
             [
-                'title' => 'Pendaftaran Seminar TA 1',
+                'title' => 'Pendaftaran Seminar TA 2',
                 'name' => 'Fahmi Yusron Fiddin',
                 'role' => 'Mahasiswa',
                 'seminar' => ' Seminar '

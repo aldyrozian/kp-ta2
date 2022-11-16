@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="https://ifwdc2018k4.files.wordpress.com/2018/09/cropped-logo-ifa12.png"
         type="image">
     <link rel="stylesheet" href="css/login.css">
-    <title>{{ $title }} | Sistem Informasi TA 1</title>
+    <title>{{ $title }} | Sistem Informasi TA 2</title>
 </head>
 
 <body>

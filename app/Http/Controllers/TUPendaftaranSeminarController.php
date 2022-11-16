@@ -15,7 +15,7 @@ class TUPendaftaranSeminarController extends Controller
         return view(
             'tu.pendaftaran-seminar',
             [
-                'title' => 'Pendaftaran Seminar TA 1',
+                'title' => 'Pendaftaran Seminar TA 2',
                 'role' => 'Koordinator',
                 'list_pendaftaran' => $list_pendaftaran
             ]
@@ -26,7 +26,7 @@ class TUPendaftaranSeminarController extends Controller
     {
         $pendaftaran = PendaftaranSeminar::with('mahasiswa')->find($id);
         return view('tu.catatan-kelolosan-seminar', [
-            'title' => 'Pendaftaran TA 1',
+            'title' => 'Pendaftaran TA 2',
             'role' => 'Koordinator',
             'status_kelolosan' => $kelolosan,
             'pendaftaran' => $pendaftaran
@@ -61,7 +61,7 @@ class TUPendaftaranSeminarController extends Controller
     {
         $pendaftaran = PendaftaranSeminar::with('mahasiswa')->find($id);
         return view('tu.detail-mahasiswa-seminar', [
-            'title' => 'Pendaftaran TA 1',
+            'title' => 'Pendaftaran TA 2',
             'role' => 'Koordinator',
             'pendaftaran' => $pendaftaran,
             'status' => $pendaftaran->status

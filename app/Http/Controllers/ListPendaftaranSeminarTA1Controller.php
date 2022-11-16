@@ -22,7 +22,7 @@ class ListPendaftaranSeminarTA1Controller extends Controller
         return view(
             'koordinator.list-pendaftaran-seminar-ta-1',
             [
-                'title' => 'Pendaftaran Seminar TA 1',
+                'title' => 'Pendaftaran Seminar TA 2',
                 'role' => 'Koordinator',
                 'list_pendaftaran' => $list_pendaftaran,
                 'kuncipendaftaran' => $kuncipendaftaran,
@@ -37,7 +37,7 @@ class ListPendaftaranSeminarTA1Controller extends Controller
     {
         $pendaftaran = PendaftaranSeminar::with('mahasiswa')->find($id);
         return view('koordinator.catatan-kelolosan-seminar', [
-            'title' => 'Pendaftaran TA 1',
+            'title' => 'Pendaftaran TA 2',
             'role' => 'Koordinator',
             'status_kelolosan' => $kelolosan,
             'pendaftaran' => $pendaftaran
@@ -72,7 +72,7 @@ class ListPendaftaranSeminarTA1Controller extends Controller
     {
         $pendaftaran = PendaftaranSeminar::with('mahasiswa')->find($id);
         return view('koordinator.detail-mahasiswa-seminar', [
-            'title' => 'Pendaftaran TA 1',
+            'title' => 'Pendaftaran TA 2',
             'role' => 'Koordinator',
             'pendaftaran' => $pendaftaran,
             'status' => $pendaftaran->status

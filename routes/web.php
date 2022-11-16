@@ -79,7 +79,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'role:Mahasiswa'], function () {
 
-        // Pendaftaran Administrasi TA 1
+        // Pendaftaran Administrasi TA 2
 
         Route::get('/mahasiswa/pendaftaran-ta-2/edit', [PendaftaranController::class, 'edit']);
         Route::post('/mahasiswa/pendaftaran-ta-2/edit', [PendaftaranController::class, 'update']);
@@ -111,7 +111,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/mahasiswa/form-bimbingan/create', [FormBimbinganController::class, 'store']);
 
 
-        // Pendaftaran Seminar TA 1
+        // Pendaftaran Seminar TA 2
 
         Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status', [PendaftaranSeminarController::class, 'status']);
         Route::get('/mahasiswa/pendaftaran-seminar-ta-1/status/download', [JadwalSeminarController::class, 'downloadJadwalMahasiswa']);
@@ -140,7 +140,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/koordinator/list-pendaftaran-seminar-ta-1/unlock', [KunciPendaftaranController::class, 'unlockSeminar'])->name('unlockSeminar');;
 
 
-        // Pendaftaran Administrasi TA 1
+        // Pendaftaran Administrasi TA 2
 
         Route::get('/koordinator/list-pendaftaran-ta-1/exportPdf', [ListPendaftaranTA1Controller::class, 'exportPdf'])->name('exportPdf');
         Route::get('/koordinator/list-pendaftaran-ta-1/{id}/viewProposal', [ListPendaftaranTA1Controller::class, 'viewProposal'])->name('viewProposal');
@@ -169,7 +169,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/hasil-review-proposal/{id}/downloadProposalReviewedR1', [HasilReviewController::class, 'downloadProposalReviewedR1']);
 
 
-        // Pendaftaran Seminar TA 1
+        // Pendaftaran Seminar TA 2
 
         Route::resource('/koordinator/list-pendaftaran-seminar-ta-1', ListPendaftaranSeminarTA1Controller::class);
         Route::get('/koordinator/list-pendaftaran-seminar-ta-1/{id}/downloadTagihanUang', [ListPendaftaranSeminarTA1Controller::class, 'downloadTagihanUang']);

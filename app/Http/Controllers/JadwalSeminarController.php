@@ -51,7 +51,7 @@ class JadwalSeminarController extends Controller
             $filepath = public_path("storage/{$data->dosen}");
             return response()->download($filepath);
         } else {
-            return redirect()->back()->with('gagal', 'Maaf, Jadwal Seminar TA 1 belum tersedia!');
+            return redirect()->back()->with('gagal', 'Maaf, Jadwal Seminar TA 2 belum tersedia!');
         }
     }
 

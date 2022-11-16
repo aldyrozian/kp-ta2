@@ -59,7 +59,7 @@ class PlottingDosenReviewer2Controller extends Controller
         return view(
             'koordinator.isian-plotting-dosen-reviewer2',
             [
-                'title' => 'Pendaftaran TA 1',
+                'title' => 'Pendaftaran TA 2',
                 'role' => 'Koordinator',
                 'plotting_dosen' => 'Reviewer',
                 'mahasiswa' => $mahasiswa,

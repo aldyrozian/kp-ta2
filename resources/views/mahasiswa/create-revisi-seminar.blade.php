@@ -6,7 +6,7 @@
 <form action="/mahasiswa/revisi-seminar/create" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-        <label for="file" class="form-label">Proposal TA 1 yang sudah direvisi</label>
+        <label for="file" class="form-label">Proposal TA 2 yang sudah direvisi</label>
         <input class="form-control" type="file" id="file" name="file" required>
     </div>
     <div>

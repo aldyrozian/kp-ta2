@@ -25,12 +25,12 @@
 <div class="d-flex justify-content-center">
     <a class="btn my-3 
     " href="/dosen/downloadJadwalSeminar" role="button" style="background-color:#ff8c1a; width: 20rem;">Jadwal Seminar
-        TA 1</a>
+        TA 2</a>
 </div>
 <div class="d-flex justify-content-center">
     <a class="btn my-3
     " href="/dosen/pembimbing-1/penilaian-seminar" role="button"
-        style="background-color:#ff8c1a; width: 20rem;">Penilaian Seminar TA 1</a>
+        style="background-color:#ff8c1a; width: 20rem;">Penilaian Seminar TA 2</a>
 </div>
 
 <div class="position-relative">
@@ -60,12 +60,12 @@
 <div class="d-flex justify-content-center">
     <a class="btn my-3 
     " href="/dosen/downloadJadwalSeminar" role="button" style="background-color:#ff8c1a; width: 20rem;">Jadwal Seminar
-        TA 1</a>
+        TA 2</a>
 </div>
 <div class="d-flex justify-content-center">
     <a class="btn my-3
     " href="/dosen/pembimbing-2/penilaian-seminar" role="button"
-        style="background-color:#ff8c1a; width: 20rem;">Penilaian Seminar TA 1</a>
+        style="background-color:#ff8c1a; width: 20rem;">Penilaian Seminar TA 2</a>
 </div>
 
 <div class="position-relative">

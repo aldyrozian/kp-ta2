@@ -173,7 +173,7 @@ class PendaftaranController extends Controller
             $list_p2 = \App\Models\Dosen::all();
             $formBimbingan = auth()->user()->mahasiswa->bimbingan;
             return view('mahasiswa.pendaftaran-ta-1-step2', [
-                'title' => 'Pendaftaran TA 1',
+                'title' => 'Pendaftaran TA 2',
                 'name' => 'Fahmi Yusron Fiddin',
                 'role' => 'Mahasiswa',
                 'seminar' => '',
@@ -235,7 +235,7 @@ class PendaftaranController extends Controller
             $list_p2 = \App\Models\Dosen::all();
             $formBimbingan = auth()->user()->mahasiswa->bimbingan;
             return view('mahasiswa.pendaftaran-ta-1-step3', [
-                'title' => 'Pendaftaran TA 1',
+                'title' => 'Pendaftaran TA 2',
                 'name' => 'Lorom Name',
                 'role' => 'Mahasiswa',
                 'seminar' => '',
@@ -288,7 +288,7 @@ class PendaftaranController extends Controller
             $list_p2 = \App\Models\Dosen::all();
             $formBimbingan = auth()->user()->mahasiswa->bimbingan;
             return view('mahasiswa.pendaftaran-ta-1-step4', [
-                'title' => 'Pendaftaran TA 1',
+                'title' => 'Pendaftaran TA 2',
                 'name' => 'Lorem Name',
                 'role' => 'Mahasiswa',
                 'seminar' => '',
@@ -350,7 +350,7 @@ class PendaftaranController extends Controller
         $formBimbingan = auth()->user()->mahasiswa->bimbingan;
 
         return view('mahasiswa.status-pendaftaran-ta-1', [
-            'title' => 'Status Pendaftaran TA 1',
+            'title' => 'Status Pendaftaran TA 2',
             'name' => 'Lorem Name',
             'role' => 'Mahasiswa',
             'formBimbingan' => $formBimbingan,
@@ -397,7 +397,7 @@ class PendaftaranController extends Controller
     public function showSyarat()
     {
         return view('mahasiswa.syarat-pendaftaran-ta-1', [
-            'title' => 'Status Pendaftaran TA 1',
+            'title' => 'Status Pendaftaran TA 2',
             'role' => 'Mahasiswa',
             'syarat' => auth()->user()->pendaftaran->keterangan_status
         ]);
@@ -406,7 +406,7 @@ class PendaftaranController extends Controller
     public function showAlasan()
     {
         return view('mahasiswa.syarat-pendaftaran-ta-1', [
-            'title' => 'Status Pendaftaran TA 1',
+            'title' => 'Status Pendaftaran TA 2',
             'role' => 'Mahasiswa',
             'syarat' => auth()->user()->pendaftaran->keterangan_status
         ]);

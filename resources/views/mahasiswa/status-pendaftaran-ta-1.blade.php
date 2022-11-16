@@ -13,7 +13,7 @@
                 @endif
                 @elseif ($status == 'Pending')
                 <h3 class="card-title" style="text-align: center;">Pending</h3>
-                <p style="text-align:center ;">Silakan segera hubungi Koordinator TA 1!</p>
+                <p style="text-align:center ;">Silakan segera hubungi Koordinator TA 2!</p>
                 @elseif ($status == 'Lolos Bersyarat')
                 <h3 class="card-title" style="text-align: center;">Lolos Bersyarat</h3>
                 @if ($status != 'Lolos Bersyarat' || auth()->user()->pendaftaran->pembimbing1 == null ||
