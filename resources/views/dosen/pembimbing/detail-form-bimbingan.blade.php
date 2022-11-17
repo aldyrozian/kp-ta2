@@ -41,31 +41,7 @@
     </a>
 </div>
 </div>
-<div class="d-flex justify-content-center mt-3 ">
-    @if($role == 'Pembimbing 1')
-    <form method="post" action="/dosen/pembimbing-1/form-bimbingan/{{$mahasiswa_id}}/bimbingan-{{$bimbingan_ke}}">
-        @csrf
-        <input type="hidden" id="setuju" name="setuju" value="1">
-        <button type="submit" class="btn btn-success mx-2" style="width: 10rem; height: 3rem;">Setuju</button>
-    </form>
-    <form method="post" action="/dosen/pembimbing-1/form-bimbingan/{{$mahasiswa_id}}/bimbingan-{{$bimbingan_ke}}">
-        @csrf
-        <input type="hidden" id="setuju" name="setuju" value="0">
-        <button type="submit" class="btn btn-danger mx-2" style="width: 10rem; height: 3rem;">Tolak</button>
-    </form>
-    @elseif ($role == 'Pembimbing 2')
-    <form method="post" action="/dosen/pembimbing-2/form-bimbingan/{{$mahasiswa_id}}/bimbingan-{{$bimbingan_ke}}">
-        @csrf
-        <input type="hidden" id="setuju" name="setuju" value="1">
-        <button type="submit" class="btn btn-success mx-2" style="width: 10rem; height: 3rem;">Setuju</button>
-    </form>
-    <form method="post" action="/dosen/pembimbing-2/form-bimbingan/{{$mahasiswa_id}}/bimbingan-{{$bimbingan_ke}}">
-        @csrf
-        <input type="hidden" id="setuju" name="setuju" value="0">
-        <button type="submit" class="btn btn-danger mx-2" style="width: 10rem; height: 3rem;">Tolak</button>
-    </form>
-    @endif
-</div>
+
 <div class="col-12 mt-5">
     @if($role == 'Pembimbing 1')
     <a class="btn " href="/dosen/pembimbing-1/form-bimbingan/{{$mahasiswa_id}}" role="button"
