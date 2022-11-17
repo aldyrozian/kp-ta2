@@ -26,14 +26,20 @@
     </div>
 </div>
 <div class="row my-3">
-    <div class="form-group">
-        <label for="pembahasan_bimbingan" class="mb-2">Pembahasan / Hasil / Saran / Tugas</label>
-        <div class="card w-100">
-            <div class="card-body">
-                {!! $bimbingan->pembahasan !!}
-            </div>
-        </div>
-    </div>
+<div class="row my-3">
+
+    <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
+        href="/dosen/pembimbing-1/form-bimbingan/{{$mahasiswa_id}}/{{ $bimbingan_ke }}/downloadbukti">Download Bukti Bimbingan
+        <i class="fa-solid fa-download"></i>
+    </a>
+</div>
+<div class="row my-3">
+
+    <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
+        href="/dosen/pembimbing-1/form-bimbingan/{{$mahasiswa_id}}/{{ $bimbingan_ke }}/downloadqrcode">Download Bukti QR
+        <i class="fa-solid fa-download"></i>
+    </a>
+</div>
 </div>
 <div class="d-flex justify-content-center mt-3 ">
     @if($role == 'Pembimbing 1')

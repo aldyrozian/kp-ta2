@@ -10,7 +10,8 @@ class BimbinganMahasiswaController extends Controller
 {
     public function index()
     {
-        $mahasiswas = Pendaftaran::with('mahasiswa')->where('p1_id', auth()->user()->pembimbing1->id)->filterAjuanPembimbing(request('search'))->paginate(5)->withQueryString();;
+        
+        $mahasiswas = Pendaftaran::with('mahasiswa')->where('p1_id', auth()->user()->pembimbing1->id)->orWhere('p2_id', auth()->user()->pembimbing2->id)->filterAjuanPembimbing(request('search'))->paginate(5)->withQueryString();;
         return view('dosen.pembimbing.bimbingan-index', [
             'title' => 'Bimbingan Mahasiswa',
             'role' => 'Pembimbing 1',
@@ -20,6 +21,7 @@ class BimbinganMahasiswaController extends Controller
 
     public function show($id)
     {
+        
         $bimbingans = \App\Models\ListBimbingan::with('bimbingan', 'mahasiswa')->oldest()->where('is_p1', 1)->whereHas('bimbingan', function ($query) use ($id) {
             $query->where('pembimbing1_id', auth()->user()->pembimbing1->id)->where('mahasiswa_id', $id);
         })->get();
@@ -36,6 +38,7 @@ class BimbinganMahasiswaController extends Controller
 
     public function showDetailBimbingan($mahasiswa_id, $bimbingan_ke)
     {
+        
         $bimbingan = \App\Models\ListBimbingan::with('bimbingan', 'mahasiswa')->oldest()->where('is_p1', 1)->whereHas('bimbingan', function ($query) use ($mahasiswa_id) {
             $query->where('pembimbing1_id', auth()->user()->pembimbing1->id)->where('mahasiswa_id', $mahasiswa_id);
         })->get()[$bimbingan_ke - 1];

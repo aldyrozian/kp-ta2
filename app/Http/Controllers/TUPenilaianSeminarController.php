@@ -10,7 +10,7 @@ class TUPenilaianSeminarController extends Controller
     public function index()
     {
         return view('tu.penilaian-seminar-index', [
-            'title' => 'Penilaian Seminar',
+            'title' => 'Berkas Penelitian Mahasiswa',
             'role' => 'Tata Usaha',
             'penilaianseminars' => PenilaianSeminar::where('p1_materi', '!=', null)
                 ->where('p2_materi', '!=', null)
@@ -23,7 +23,7 @@ class TUPenilaianSeminarController extends Controller
     public function show($id)
     {
         return view('tu.penilaian-seminar-show', [
-            'title' => 'Penilaian Seminar',
+            'title' => 'Berkas Penelitian Mahasiswa',
             'role' => 'Tata Usaha',
             'penilaianseminar' => PenilaianSeminar::with('mahasiswa', 'pembimbing1', 'pembimbing2', 'reviewer1', 'reviewer2')->where('id', $id)->first()
         ]);

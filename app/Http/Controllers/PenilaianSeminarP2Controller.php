@@ -11,7 +11,7 @@ class PenilaianSeminarP2Controller extends Controller
     {
         $listPenilaianSeminar = PenilaianSeminar::with('mahasiswa')->where('pembimbing2_id', auth()->user()->pembimbing2->id)->filter(request('search'))->paginate(7)->withQueryString();
         return view('dosen.pembimbing.penilaian-seminar', [
-            'title' => 'Penilaian Seminar',
+            'title' => 'Berkas Penelitian Mahasiswa',
             'role' => 'Pembimbing 2',
             'mahasiswas' => $listPenilaianSeminar
         ]);
@@ -22,7 +22,7 @@ class PenilaianSeminarP2Controller extends Controller
         $penilaianseminar = PenilaianSeminar::with('mahasiswa')->find($id);
         if ($penilaianseminar->p2_materi != null) {
             return view('dosen.pembimbing.p2detail-penilaian-seminar', [
-                'title' => 'Detail Penilaian Seminar',
+                'title' => 'Detail Berkas Penelitian Mahasiswa',
                 'role' => 'Pembimbing 2',
                 'penilaianSeminar' => $penilaianseminar
             ]);
@@ -36,13 +36,13 @@ class PenilaianSeminarP2Controller extends Controller
         $penilaianseminar = PenilaianSeminar::with('mahasiswa')->find($id);
         if ($penilaianseminar->p2_materi != null) {
             return view('dosen.pembimbing.p2isian-penilaian-seminar', [
-                'title' => 'Edit Penilaian Seminar',
+                'title' => 'Edit Berkas Penelitian Mahasiswa',
                 'role' => 'Pembimbing 2',
                 'penilaianSeminar' => $penilaianseminar
             ]);
         } else {
             return view('dosen.pembimbing.p2create-penilaian-seminar', [
-                'title' => 'Form Penilaian Seminar',
+                'title' => 'Form Berkas Penelitian Mahasiswa',
                 'role' => 'Pembimbing 2',
                 'penilaianSeminar' => $penilaianseminar
             ]);

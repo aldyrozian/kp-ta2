@@ -30,6 +30,7 @@ use App\Http\Controllers\PenilaianSeminarP2Controller;
 use App\Http\Controllers\PenilaianSeminarR2Controller;
 use App\Http\Controllers\TUPenilaianSeminarController;
 use App\Http\Controllers\BimbinganMahasiswa2Controller;
+use App\Http\Controllers\dosencontroller;
 use App\Http\Controllers\PenilaianSeminarKoorController;
 use App\Http\Controllers\TUPendaftaranSeminarController;
 use App\Http\Controllers\PlottingDosenReviewerController;
@@ -108,6 +109,8 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('/mahasiswa/form-bimbingan', FormBimbinganController::class);
         Route::get('/mahasiswa/form-bimbingan/{x}/edit', [FormBimbinganController::class, 'edit']);
+        Route::get('/mahasiswa/form-bimbingan/{x}/downloadbukti', [FormBimbinganController::class, 'downloadbuktibim']);
+        Route::get('/mahasiswa/form-bimbingan/{x}/downloadqr', [FormBimbinganController::class, 'downloadqrcode']);
         Route::post('/mahasiswa/form-bimbingan/create', [FormBimbinganController::class, 'store']);
 
 
@@ -188,7 +191,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/koordinator/jadwal-seminar/mahasiswa', [JadwalSeminarController::class, 'downloadJadwalMahasiswa']);
         Route::get('/koordinator/jadwal-seminar/dosen', [JadwalSeminarController::class, 'downloadJadwalDosen']);
 
-        // Rilis Penilaian Seminar
+        // Rilis Berkas Penelitian Mahasiswa
         Route::get('/koordinator/penilaian-seminar/rilis-{id}', [PenilaianSeminarKoorController::class, 'setRilis']);
         Route::get('/koordinator/penilaian-seminar/reset-{id}', [PenilaianSeminarKoorController::class, 'resetRilis']);
         Route::post('/koordinator/penilaian-seminar/rilis', [PenilaianSeminarKoorController::class, 'setRilisBeberapa']);
@@ -199,12 +202,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'role:Dosen'], function () {
         Route::get('/dosen', function () {
-            return view('dosen.index', [
+            return view('dosen.index1', [
                 'title' => 'Home',
                 'role' => 'Dosen'
             ]);
         });
         Route::get('/dosen/downloadJadwalSeminar', [JadwalSeminarController::class, 'downloadJadwalDosen']);
+        Route::get('/dosen/bimbingan',[dosencontroller::class,'']);
 
         // Reviewer 1
 
@@ -244,6 +248,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/dosen/pembimbing-1/review-proposal/formReview-{id}', [ReviewerP1Controller::class, 'createFormReview'])->name('create-form-review-p1');
 
         Route::get('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'showDetailBimbingan']);
+        Route::get('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/{x}/downloadqrcode', [FormBimbinganController::class, 'downloadqrcode']);
+        Route::get('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/{x}/downloadbukti', [FormBimbinganController::class, 'downloadbuktibim']);
         Route::post('/dosen/pembimbing-1/form-bimbingan/{mahasiswa_id}/bimbingan-{x}', [BimbinganMahasiswaController::class, 'setPersetujuanBimbingan']);
         Route::resource('/dosen/pembimbing-1/form-bimbingan', BimbinganMahasiswaController::class);
         Route::resource('dosen/pembimbing-1/penilaian-seminar', PenilaianSeminarP1Controller::class);

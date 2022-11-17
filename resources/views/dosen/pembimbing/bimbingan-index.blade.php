@@ -60,16 +60,37 @@
                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
                 </span>
             </th>
+                        <th scope="col">Sebagai
+                <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
+                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                </span>
+            </th>
             <th scope="col">Aksi</th>
         </tr>
     </thead>
     @foreach ($mahasiswas as $key=> $mahasiswa)
+    <?php
+    $p1_id = $mahasiswa->p1_id;
+    $p2_id = $mahasiswa->p2_id;
+    if (auth()->user()->pembimbing1->id == $p1_id) {
+        $isp1 = true;
+    }else if (auth()->user()->pembimbing2->id == $p2_id) {
+        $isp1 = false;
+    }
+    
+    ?>
     <tbody>
         <tr>
             <th scope="row">{{ $mahasiswas->firstItem()+ $key}}</th>
             <td>{{ $mahasiswa->mahasiswa->nim }}</td>
             <td>{{ $mahasiswa->mahasiswa->name }}</td>
             <td>{{ $mahasiswa->peminatan }}</td>
+            @if ($isp1 == true) 
+            <td> Pembimbing 1 </td>
+            @else 
+            <td> Pembimbing 2 </td>
+            @endif
             <td>
                 @if($role == 'Pembimbing 1')
                 <a class="btn btn-warning" href="/dosen/pembimbing-1/form-bimbingan/{{ $mahasiswa->mahasiswa->id  }}"><i
@@ -86,11 +107,7 @@
 
 <div class="d-flex justify-content-between">
     <div>
-        @if ($role == 'Pembimbing 1')
-        <a class="btn" href="/dosen/pembimbing-1" role="button" style="background-color:#ff8c1a; width: 6rem;">Back</a>
-        @elseif ($role == 'Pembimbing 2')
-        <a class="btn" href="/dosen/pembimbing-2" role="button" style="background-color:#ff8c1a; width: 6rem;">Back</a>
-        @endif
+        <a class="btn" href="/dosen" role="button" style="background-color:#ff8c1a; width: 6rem;">Back</a>
     </div>
     <div>
         Showing

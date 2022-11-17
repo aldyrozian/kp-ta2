@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('waktu');
             $table->string('pokok_materi');
             $table->string('berkas_bukti')->nullable();
-            $table->text('pembahasan');
+            $table->string('qrcode')->nullable();
             $table->boolean('is_p1')->nullable();
             $table->boolean('setuju')->nullable();
             $table->timestamps();

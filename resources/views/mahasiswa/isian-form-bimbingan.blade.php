@@ -46,19 +46,18 @@
                 </select>
             </div>
         </div>
-        <div class="row my-3">
-            <div class="form-group">
-                <label for="pembahasan_bimbingan" class="mb-2">Pembahasan / Hasil / Saran / Tugas</label>
-                <input id="pembahasan_bimbingan" type="hidden" name="pembahasan_bimbingan" required>
-                <trix-editor input="pembahasan_bimbingan"></trix-editor>
-            </div>
-        </div>
                     <div class="row mt-4">
                         <div class="col-md-5">
                             <label for="berkas_bim" class="form-label">Bukti Bimbingan</label>
                             <input class="form-control" type="file" id="berkas_bim" name="berkas_bim">
                         </div>
-                    </div>        
+                    </div>       
+                    <div class="row mt-4">
+                                            <div class="col-md-5">
+                                                <label for="qrcode" class="form-label">TTD Digital</label>
+                                                <input class="form-control" type="file" id="qrcode" name="qrcode">
+                                            </div>
+                                        </div> 
         <div class="col-12 mt-5">
             <a class="btn " href="/mahasiswa/form-bimbingan" role="button"
                 style="width: 5rem;background-color:#ff8c1a;">Back</a>

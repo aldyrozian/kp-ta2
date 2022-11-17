@@ -35,14 +35,18 @@
             </div>
         </div>
         <div class="row my-3">
-            <div class="form-group">
-                <label for="pembahasan_bimbingan" class="mb-2">Pembahasan / Hasil / Saran / Tugas</label>
-                <div class="card w-100">
-                    <div class="card-body">
-                        {!! $bimbingan->pembahasan !!}
-                    </div>
-                </div>
-            </div>
+
+                <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
+                    href="/mahasiswa/form-bimbingan/{{$bimbingan_ke}}/downloadbukti">Download Bukti Bimbingan 
+                    <i class="fa-solid fa-download"></i>
+                </a>
+        </div>
+        <div class="row my-3">
+
+            <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
+                                href="/mahasiswa/form-bimbingan/{{$bimbingan_ke}}/downloadqr">Download Bukti QR
+                                <i class="fa-solid fa-download"></i>
+                            </a>
         </div>
         <div class="col-12 mt-5">
             <a class="btn " href="/mahasiswa/form-bimbingan" role="button"

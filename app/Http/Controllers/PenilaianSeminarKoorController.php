@@ -21,7 +21,7 @@ class PenilaianSeminarKoorController extends Controller
         $list_mahasiswa = $list_mahasiswa->paginate(7)->withQueryString();
 
         return view('koordinator.penilaian-seminar-index', [
-            'title' => 'Penilaian Seminar',
+            'title' => 'Berkas Penelitian Mahasiswa',
             'role' => 'Koordinator',
             'penilaianseminars' => $list_mahasiswa,
             'sortBy' => $request->sortBy,
@@ -43,7 +43,7 @@ class PenilaianSeminarKoorController extends Controller
         PenilaianSeminar::where('id', $id)->first()->update([
             'rilis' => 1
         ]);
-        return redirect()->back()->with('success', 'Penilaian seminar sukses dirilis!');
+        return redirect()->back()->with('success', 'Berkas Penelitian Mahasiswa sukses dirilis!');
     }
 
     public function resetRilis($id)
@@ -51,13 +51,13 @@ class PenilaianSeminarKoorController extends Controller
         PenilaianSeminar::where('id', $id)->first()->update([
             'rilis' => 0
         ]);
-        return redirect()->back()->with('success', 'Penilaian seminar telah ditarik!');
+        return redirect()->back()->with('success', 'Berkas Penelitian Mahasiswa telah ditarik!');
     }
 
     public function setRilisBeberapa(Request $request)
     {
         if (!isset($request['checked'])) {
-            return redirect()->back()->with('gagal', 'Anda belum memilih penilaian seminar yang akan dirilis!');
+            return redirect()->back()->with('gagal', 'Anda belum memilih Berkas Penelitian Mahasiswa yang akan dirilis!');
         } else {
             foreach ($request['checked'] as $item) {
                 $review = PenilaianSeminar::find($item);
@@ -65,8 +65,8 @@ class PenilaianSeminarKoorController extends Controller
                     'rilis' => 1
                 ]);
             }
-            return redirect()->intended('/koordinator/penilaian-seminar')->with('success', 'Penilaian Seminar telah dirilis!');
+            return redirect()->intended('/koordinator/penilaian-seminar')->with('success', 'Berkas Penelitian Mahasiswa telah dirilis!');
         }
-        return redirect()->back()->with('success', 'Penilaian seminar sukses dirilis!');
+        return redirect()->back()->with('success', 'Berkas Penelitian Mahasiswa sukses dirilis!');
     }
 }

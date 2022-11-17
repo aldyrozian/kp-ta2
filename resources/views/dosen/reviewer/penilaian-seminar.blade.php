@@ -58,37 +58,58 @@
                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
                 </span>
             </th>
-            <th scope="col">Status
+            <th scope="col">Sebagai
                 <span wire:click="sortBy('name')" class="float-right" style="cursor: pointer;">
                     <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
                     <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
                 </span>
             </th>
-            <th scope="col">Aksi</th>
+            <th scope="col">Penelitian</th>
         </tr>
     </thead>
     @foreach ($mahasiswas as $key=> $mahasiswa)
+    <?php
+            $p1_id = $mahasiswa->pembimbing1_id;
+            $p2_id = $mahasiswa->pembimbing2_id;
+            $r1_id = $mahasiswa->reviewer1_id;
+            $r2_id = $mahasiswa->reviewer2_id;
+            if (auth()->user()->pembimbing1->id == $p1_id) {
+                $sebagaiaja = 'p1';
+            }else if (auth()->user()->pembimbing2->id == $p2_id) {
+                $sebagaiaja = 'p2';
+            }else if (auth()->user()->reviewer1->id == $r1_id) {
+                $sebagaiaja = 'r1';
+            }else if (auth()->user()->reviewer2->id == $r2_id) {
+                $sebagaiaja = 'r2';
+            }
+            
+            ?>
     <tbody>
         <tr>
             <th scope="row">{{ $mahasiswas->firstItem()+ $key}}</th>
             <td>{{ $mahasiswa->mahasiswa->nim }}</td>
             <td>{{ $mahasiswa->mahasiswa->name }}</td>
             <td>{{ $mahasiswa->mahasiswa->pendaftaranseminar->peminatan }}</td>
+
+            @if ($sebagaiaja == 'p1')
+            <td> Pembimbing 1 </td>
+            @elseif ($sebagaiaja == 'p2')
+            <td> Pembimbing 2 </td>
+            @elseif ($sebagaiaja == 'r1')
+            <td> Penguji 1 </td>
+            @elseif ($sebagaiaja == 'r2')
+            <td> Penguji 2 </td>
+            @endif
+
             @if ($role == 'Reviewer 1')
             @if ($mahasiswa->r1_presentasi != null)
             <td><i class="fa-solid fa-check"></i></td>
             @else
-            <td></td>
-            @endif
-            @else
-            @if ($mahasiswa->r2_presentasi != null)
-            <td><i class="fa-solid fa-check"></i></td>
-            @else
-            <td></td>
+
             @endif
             @endif
             <td>
-                @if ($role == 'Reviewer 1')
+
                 <?php
                 $mahasiswa_id = $mahasiswa->mahasiswa->id;
                 $pendaftaran_id = App\Models\PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->id;
@@ -96,35 +117,15 @@
                 <a class="btn btn-warning"
                     href="/dosen/reviewer-1/penilaian-seminar/{{ $pendaftaran_id }}/downloadFinalProposal"><i
                         class="fa-solid fa-file-arrow-down"></i>
-                    Proposal</a>
-                <a class="btn" href="/dosen/reviewer-1/penilaian-seminar/{{ $mahasiswa->id }}"
-                    style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i>
-                    Detail</a>
-                @else
-                <?php
-                $mahasiswa_id = $mahasiswa->mahasiswa->id;
-                $pendaftaran_id = App\Models\PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->id;
-                ?>
-                <a class="btn btn-warning"
-                    href="/dosen/reviewer-2/penilaian-seminar/{{ $pendaftaran_id }}/downloadFinalProposal"><i
-                        class="fa-solid fa-file-arrow-down"></i>
-                    Proposal</a>
-                <a class="btn" href="/dosen/reviewer-2/penilaian-seminar/{{ $mahasiswa->id }}"
-                    style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i>
-                    Detail</a>
-                @endif
+                    Download</a>
+
             </td>
         </tr>
     </tbody>
     @endforeach
 </table>
 <div class="position-relative">
-    @if ($role == 'Reviewer 1')
     <a class="btn my-3
-    " href="/dosen/reviewer-1" role="button" style="background-color:#ff8c1a; width: 5rem;">Kembali</a>
-    @else
-    <a class="btn my-3
-    " href="/dosen/reviewer-2" role="button" style="background-color:#ff8c1a; width: 5rem;">Kembali</a>
-    @endif
+    " href="/dosen" role="button" style="background-color:#ff8c1a; width: 5rem;">Kembali</a>
 </div>
 @endsection

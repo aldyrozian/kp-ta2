@@ -9,9 +9,14 @@ class PenilaianSeminarController extends Controller
 {
     public function index()
     {
-        $listPenilaianSeminar = PenilaianSeminar::with('mahasiswa')->where('reviewer1_id', auth()->user()->reviewer1->id)->filter(request('search'))->paginate(7)->withQueryString();
+        $listPenilaianSeminar = PenilaianSeminar::with('mahasiswa')
+        ->where('pembimbing1_id', auth()->user()->pembimbing1->id)
+        ->orWhere('pembimbing2_id', auth()->user()->pembimbing2->id)
+        ->orWhere('reviewer1_id', auth()->user()->reviewer1->id)
+        ->orWhere('reviewer2_id', auth()->user()->reviewer2->id)
+        ->filter(request('search'))->paginate(7)->withQueryString();
         return view('dosen.reviewer.penilaian-seminar', [
-            'title' => 'Penilaian Seminar',
+            'title' => 'Berkas Penelitian Mahasiswa',
             'role' => 'Reviewer 1',
             'mahasiswas' => $listPenilaianSeminar
         ]);
@@ -22,7 +27,7 @@ class PenilaianSeminarController extends Controller
         $penilaianseminar = PenilaianSeminar::with('mahasiswa')->find($id);
         if ($penilaianseminar->r1_presentasi != null) {
             return view('dosen.reviewer.detail-penilaian-seminar', [
-                'title' => 'Detail Penilaian Seminar',
+                'title' => 'Detail Berkas Penelitian Mahasiswa',
                 'role' => 'Reviewer 1',
                 'penilaianSeminar' => $penilaianseminar
             ]);
@@ -36,13 +41,13 @@ class PenilaianSeminarController extends Controller
         $penilaianseminar = PenilaianSeminar::with('mahasiswa')->find($id);
         if ($penilaianseminar->r1_presentasi != null) {
             return view('dosen.reviewer.isian-penilaian-seminar', [
-                'title' => 'Edit Penilaian Seminar',
+                'title' => 'Edit Berkas Penelitian Mahasiswa',
                 'role' => 'Reviewer 1',
                 'penilaianSeminar' => $penilaianseminar
             ]);
         } else {
             return view('dosen.reviewer.create-penilaian-seminar', [
-                'title' => 'Form Penilaian Seminar',
+                'title' => 'Form Berkas Penelitian Mahasiswa',
                 'role' => 'Reviewer 1',
                 'penilaianSeminar' => $penilaianseminar
             ]);

@@ -16,7 +16,7 @@ class Penilaian_seminarController extends Controller
         return view(
             'k-penilaian-seminar',
             [
-                'title' => 'Penilaian Seminar',
+                'title' => 'Berkas Penelitian Mahasiswa',
                 'name' => 'Galang Setia Nugroho',
                 'role' => 'Koordinator',
                 'list_mahasiswa' => \App\Models\Pendaftaran::latest()->filter(request('search'))->paginate(7)->withQueryString()

@@ -30,7 +30,7 @@
 <div class="d-flex justify-content-center">
     <a class="btn my-3
     " href="/dosen/pembimbing-1/penilaian-seminar" role="button"
-        style="background-color:#ff8c1a; width: 20rem;">Penilaian Seminar TA 2</a>
+        style="background-color:#ff8c1a; width: 20rem;">Berkas Penelitian Mahasiswa TA 2</a>
 </div>
 
 <div class="position-relative">
@@ -65,7 +65,7 @@
 <div class="d-flex justify-content-center">
     <a class="btn my-3
     " href="/dosen/pembimbing-2/penilaian-seminar" role="button"
-        style="background-color:#ff8c1a; width: 20rem;">Penilaian Seminar TA 2</a>
+        style="background-color:#ff8c1a; width: 20rem;">Berkas Penelitian Mahasiswa TA 2</a>
 </div>
 
 <div class="position-relative">
