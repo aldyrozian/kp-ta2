@@ -1,4 +1,4 @@
-@extends('layouts/main3')
+@extends('layouts/main')
 @section('container')
 <h2 style="text-align:center;">Seleksi Administrasi</h2>
 

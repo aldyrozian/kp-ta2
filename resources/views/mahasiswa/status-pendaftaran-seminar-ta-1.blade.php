@@ -1,4 +1,4 @@
-@extends('layouts/main2')
+@extends('layouts/main')
 @section('container')
 
 <h2 style="text-align:center;">Status Pendaftaran Seminar TA 2</h2>

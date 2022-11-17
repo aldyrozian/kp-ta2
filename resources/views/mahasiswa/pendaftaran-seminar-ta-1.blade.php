@@ -1,4 +1,4 @@
-@extends('layouts/main2')
+@extends('layouts/main')
 @section('container')
 @if (session()->has('ajuanPembimbingNotValid'))
 <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
