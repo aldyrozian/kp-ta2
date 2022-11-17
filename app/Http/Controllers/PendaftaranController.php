@@ -381,7 +381,7 @@ class PendaftaranController extends Controller
         $formBimbingan = auth()->user()->mahasiswa->bimbingan;
         $pendaftaran = auth()->user()->pendaftaran;
         return view('mahasiswa.update-pendaftaran', [
-            'title' => 'Edit Pendaftaran',
+            'title' => 'Update Pendaftaran',
             'name' => 'Lorem Name',
             'role' => 'Mahasiswa',
             'pendaftaran' => $pendaftaran,
