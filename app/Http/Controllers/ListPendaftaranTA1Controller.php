@@ -51,6 +51,8 @@ class ListPendaftaranTA1Controller extends Controller
         $id_mahasiswa = $pendaftaran->mahasiswa_id;
         $pembimbing1 = $pendaftaran->s_p1;
         $pembimbing2 = $pendaftaran->s_p2;
+        $penguji1 = $pendaftaran->s_u1;
+        $penguji2 = $pendaftaran->s_u2;
         $pendaftaranid = $pendaftaran->id;
 
         \App\Models\Bimbingan::create([
@@ -58,6 +60,10 @@ class ListPendaftaranTA1Controller extends Controller
             'pembimbing1_id' => $pembimbing1,
             'pembimbing2_id' => $pembimbing2
         ]);
+        // PendaftaranSeminar::where('id', $id)->create([
+        //     'r1_id' =>  $penguji1,
+        //     'r2_id' =>  $penguji2,
+        // ]);
         \App\Models\Review::create([
             'mahasiswa_id' => $id_mahasiswa,
             'pendaftaran_id' => $pendaftaranid
@@ -92,6 +98,8 @@ class ListPendaftaranTA1Controller extends Controller
                 'jumlah_teori_d' => $pendaftaran['jumlah_teori_d'],
                 'jumlah_prak_d' => $pendaftaran['jumlah_prak_d'],
                 'jumlah_e' => $pendaftaran['jumlah_e'],
+                'r1_id' =>  $penguji1,
+                'r2_id' =>  $penguji2,
             ]);
         } elseif (request('status') == 'Tidak Lolos' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
             PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->delete();
@@ -124,11 +132,14 @@ class ListPendaftaranTA1Controller extends Controller
 
     public function update($id)
     {
+        
         $pendaftaran = Pendaftaran::with('mahasiswa')->where('id', $id)->get()[0];
         $id_mahasiswa = $pendaftaran->mahasiswa_id;
         $pembimbing1 = $pendaftaran->s_p1;
         $pembimbing2 = $pendaftaran->s_p2;
         $pendaftaranid = $pendaftaran->id;
+        $penguji1 = $pendaftaran->s_u1;
+        $penguji2 = $pendaftaran->s_u2;
 
         \App\Models\Bimbingan::create([
             'mahasiswa_id' => $id_mahasiswa,
@@ -168,7 +179,9 @@ class ListPendaftaranTA1Controller extends Controller
                     'prak_pemweb' => $pendaftaran['prak_pemweb'],
                     'po1' => $pendaftaran['po1'],
                     'prak_po1' => $pendaftaran['prak_po1'],
-                    'appl' => $pendaftaran['appl']
+                    'appl' => $pendaftaran['appl'],
+                    'r1_id' =>  $penguji1,
+                    'r2_id' =>  $penguji2,
                 ]);
             } elseif (request('status') == 'Pending' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
                 PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->delete();

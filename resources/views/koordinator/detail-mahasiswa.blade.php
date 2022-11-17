@@ -118,6 +118,13 @@
             <input type="text" class="form-control" name="p2" id="p2" readonly value="{{ $pendaftaran->p2 }}">
         </div>
 
+         <div class="col-md-6 p-2">
+            <h6 style="text-align:center;">Penguji</h6>
+            <label for="p1" class="form-label">Penguji 1</label>
+            <input type="text" class="form-control" name="u1" id="u1" readonly value="{{ $pendaftaran->u1 }}">
+            <label for="p2" class="form-label mt-2">Penguji 2</label>
+            <input type="text" class="form-control" name="u2" id="u2" readonly value="{{ $pendaftaran->u2 }}">
+        </div>
 
         <div class="mt-4">
         </div>

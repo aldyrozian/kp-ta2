@@ -49,7 +49,6 @@ class PendaftaranController extends Controller
         if (!isset(auth()->user()->pendaftaran)) {
             $pendaftaran = Pendaftaran::create([
                 'mahasiswa_id' => auth()->user()->mahasiswa->id,
-                'phone_number' => request('phone_number'),
                 'peminatan' => request('peminatan'),
                 'angkatan' => request('angkatan')
             ]);
@@ -57,7 +56,6 @@ class PendaftaranController extends Controller
             $mahasiswa_id = auth()->user()->pendaftaran->mahasiswa_id;
             $pendaftaran = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->update([
                 'mahasiswa_id' => auth()->user()->mahasiswa->id,
-                'phone_number' => request('phone_number'),
                 'peminatan' => request('peminatan'),
                 'angkatan' => request('angkatan')
             ]);
@@ -137,6 +135,21 @@ class PendaftaranController extends Controller
 
 
         //---
+        $u1Value = request('u1');
+        $u2Value = request('u2');
+
+        $pos_u1 = strpos($u1Value, "(");
+        $pos_u2 = strpos($u2Value, "(");
+
+        $u1Value = substr($u1Value, 0, $pos_u1 - 1);
+        $u2Value = substr($u2Value, 0, $pos_u2 - 1);
+
+        $dosen_idu1 = Dosen::where('name', '=', $u1Value)->get()[0]->id;
+        $dosen2_idu2 = Dosen::where('name', '=', $u2Value)->get()[0]->id;
+
+
+        $u1_id = Pembimbing1::where('dosen_id', $dosen_idu1)->get()[0]->id;
+        $u2_id = Pembimbing2::where('dosen_id', $dosen2_idu2)->get()[0]->id;
         //-----------
         $mahasiswa_id = auth()->user()->mahasiswa->id;
         Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->update([
@@ -146,6 +159,10 @@ class PendaftaranController extends Controller
             'p2_id' => $p2_id,
             's_p1' => $p1_id,
             's_p2' => $p2_id,
+            'u1' => request('u1'),
+            'u2' => request('u2'),
+            's_u1' => $u1_id,
+            's_u2' => $u2_id,
 
         ]);
 

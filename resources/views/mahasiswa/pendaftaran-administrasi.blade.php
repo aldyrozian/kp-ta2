@@ -65,16 +65,6 @@
                 </select>
             </div>
 
-            <div class=" col-md-6 ">
-                <div class=" input-group">
-                    <label for="phone_number" class="input-group mb-2">Nomor Telepon (WA)</label>
-                    <div class="input-group-text">+62</div>
-                    <input type="number" class="form-control" id="phone_number" name="phone_number"
-                        placeholder="898******">
-                </div>
-            </div>
-
-
             @else
             <div class="col-md-6">
                 <label for="nim" class="form-label">NIM</label>
@@ -133,7 +123,26 @@
                             @endforeach
                         </select>
                         </div>
-
+                        
+                        {{-- Req pak edvin --}}
+<div class="col-md-6 ">
+<label for="u1" class="form-label error">Nama Penguji 1</label>
+            <select type="text" class="form-select" name="u1" id="u1">
+                <option disabled selected>Pilih.. </option>
+                @foreach ($list_p2 as $p2)
+                <option>{{ $p2->name }} ({{ $p2->jabfung->name }})</option>
+                @endforeach
+            </select>
+            </div>
+<div class="col-md-6 ">
+<label for="u2" class="form-label error">Nama Penguji 2</label>
+            <select type="text" class="form-select" name="u2" id="u2">
+                <option disabled selected>Pilih.. </option>
+                @foreach ($list_p2 as $p2)
+                <option>{{ $p2->name }} ({{ $p2->jabfung->name }})</option>
+                @endforeach
+            </select>
+</div>
             {{-- STEP2 --}}
             <div class="row align-items-start mt-3">
                 @if ($seminar == '')
