@@ -27,6 +27,6 @@
 <div class="d-flex justify-content-center">
     <a class="btn my-3
     " href="/dosen/reviewer-1/penilaian-seminar" role="button"
-        style="background-color:#ff8c1a; width: 20rem;">Data Proposal Seminar</a>
+        style="background-color:#ff8c1a; width: 20rem;">Berkas Penelitian Mahasiswa</a>
 </div>
 @endsection
