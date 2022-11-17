@@ -72,7 +72,7 @@
 
             <div class="col-sm-5">
                 <div class="title-home">
-                    <h1>Sistem Informasi<br>Tugas Akhir 1<br>Jurusan Informatika</h1>
+                    <h1>Sistem Informasi<br>Tugas Akhir 2<br>Jurusan Informatika</h1>
                 </div>
             </div>
         </div>

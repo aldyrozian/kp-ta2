@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
 @if (auth()->user()->pendaftaran->status == 'Lolos Bersyarat')
-<h2 class="text-center mb-5">Syarat Maju Tugas Akhir 1</h2>
+<h2 class="text-center mb-5">Syarat Maju Tugas Akhir 2</h2>
 @elseif (auth()->user()->pendaftaran->status == 'Tidak Lolos')
 <h2 class="text-center mb-5">Alasan Tidak Lolos Seleksi Administrasi</h2>
 @endif

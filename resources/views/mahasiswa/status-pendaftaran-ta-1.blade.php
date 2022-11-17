@@ -25,7 +25,7 @@
                 @elseif ($status == 'Tidak Lolos')
                 <h3 class="card-title" style="text-align: center;">Tidak Lolos</h3>
                 @if (auth()->user()->pendaftaran->status == 'Lolos Bersyarat')
-                <h2 class="text-center mb-5">Syarat Maju Tugas Akhir 1</h2>
+                <h2 class="text-center mb-5">Syarat Maju Tugas Akhir 2</h2>
                 @elseif (auth()->user()->pendaftaran->status == 'Tidak Lolos')
                 @endif
                                 @if (auth()->user()->pendaftaran->status == 'Lolos Bersyarat')
