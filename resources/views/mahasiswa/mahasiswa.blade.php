@@ -29,11 +29,5 @@
         style="background-color:#ff8c1a; width: 20rem;">Pendaftaran
         Seminar TA 2</a>
 </div>
-<div class="d-flex justify-content-center">
-    <a class="btn my-3
-    @if(!isset(auth()->user()->penilaianSeminar))
-    disabled
-    @endif
-    " href="/mahasiswa/revisi-seminar" role="button" style="background-color:#ff8c1a; width: 20rem;">Revisi Seminar</a>
-</div>
+
 @endsection
