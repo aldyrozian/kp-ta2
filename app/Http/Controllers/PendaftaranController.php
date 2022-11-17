@@ -354,11 +354,12 @@ class PendaftaranController extends Controller
             'name' => 'Lorem Name',
             'role' => 'Mahasiswa',
             'formBimbingan' => $formBimbingan,
-            'status' => auth()->user()->pendaftaran->status
+            'status' => auth()->user()->pendaftaran->status,
+            'syarat' => auth()->user()->pendaftaran->keterangan_status
         ]);
     }
 
-    public function edit()
+    public function edit(Request $request)
     {
         $formBimbingan = auth()->user()->mahasiswa->bimbingan;
         $pendaftaran = auth()->user()->pendaftaran;
@@ -371,8 +372,30 @@ class PendaftaranController extends Controller
         ]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        $mahasiswa_id = auth()->user()->mahasiswa->id;
+        // Menentukan kelolosan dan kketerangan kelolosan
+        $ketTidakLolos = '';
+        if ($request['jumlah_e'] > 0 || $request['jumlah_teori_d'] >= 14) {
+            if ($request['jumlah_teori_d'] >= 14) {
+                $ketTidakLolos = $ketTidakLolos . 'Nilai d lebih dari 13<br>';
+            }
+            if ($request['jumlah_sks'] < 140) {
+                $ketTidakLolos = $ketTidakLolos . 'Jumlah sks kurang dari 140<br>';
+            }
+            if ($request['jumlah_e'] >= 1) {
+                $ketTidakLolos = $ketTidakLolos . 'Terdapat nilai E<br>';
+            }
+            Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->update([
+                'status' => 'Tidak Lolos',
+                'keterangan_status' => $ketTidakLolos,
+            ]);
+        }else{
+            Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->update([
+                            'status' => 'Pending',
+            ]);
+        }
         $file = request()->validate([
             'khs' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
         ]);
@@ -389,7 +412,7 @@ class PendaftaranController extends Controller
             'khs' => $file['khs'],
             'peminatan' => request('peminatan'),
             'angkatan' => request('angkatan'),
-            'status' => 'Pending'
+
         ]);
         return redirect()->intended('/mahasiswa/pendaftaran-ta-2/status');
     }

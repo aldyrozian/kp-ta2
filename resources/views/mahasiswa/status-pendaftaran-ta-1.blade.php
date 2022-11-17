@@ -24,6 +24,16 @@
                 @endif
                 @elseif ($status == 'Tidak Lolos')
                 <h3 class="card-title" style="text-align: center;">Tidak Lolos</h3>
+                @if (auth()->user()->pendaftaran->status == 'Lolos Bersyarat')
+                <h2 class="text-center mb-5">Syarat Maju Tugas Akhir 1</h2>
+                @elseif (auth()->user()->pendaftaran->status == 'Tidak Lolos')
+                @endif
+                                @if (auth()->user()->pendaftaran->status == 'Lolos Bersyarat')
+                                <h5><b>Saat pendaftaran seminar, anda diharuskan untuk :</b></h5>
+                                {!! $syarat !!}
+                                @elseif (auth()->user()->pendaftaran->status == 'Tidak Lolos')
+                                {!! $syarat !!}
+                                @endif
                 @else
                 <h3 class="card-title" style="text-align: center;">Seleksi Administrasi</h3>
                 @endif
@@ -67,10 +77,10 @@
 <div class="d-flex justify-content-center mt-5">
     <a href="/mahasiswa" class="btn" style="background-color:#ff8c1a;">Kembali</a>
     @if ($status == 'Lolos Bersyarat')
-    <a href="/mahasiswa/pendaftaran-ta-2/status/syarat" class="btn mx-2" style="background-color:#ff8c1a;">Syarat</a>
+    {{-- <a href="/mahasiswa/pendaftaran-ta-2/status/syarat" class="btn mx-2" style="background-color:#ff8c1a;">Syarat</a> --}}
     @elseif ($status == 'Tidak Lolos')
-    <a href="/mahasiswa/pendaftaran-ta-2/status/alasan-tidak-lolos" class="btn mx-2"
-        style="background-color:#ff8c1a;">Alasan</a>
+    {{-- <a href="/mahasiswa/pendaftaran-ta-2/status/alasan-tidak-lolos" class="btn mx-2"
+        style="background-color:#ff8c1a;">Alasan</a> --}}
         <a href="/mahasiswa/pendaftaran-ta-2/edit" class="btn mx-2"
             style="background-color:#ff8c1a;">Update</a>
     @endif
