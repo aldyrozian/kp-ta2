@@ -5,7 +5,7 @@
 
 
         <div class="d-flex justify-content-center">
-            <a class="btn my-3" href="koordinator/list-pendaftaran-ta-1" role="button"
+            <a class="btn my-3" href="koordinator/list-pendaftaran-ta-2" role="button"
                 style="background-color:#ff8c1a; width: 20rem;">Pendaftaran Administrasi TA 2</a>
         </div>
         <div class="d-flex justify-content-center">
@@ -14,7 +14,7 @@
                         Penguji</a>
                 </div>
         <div class="d-flex justify-content-center">
-            <a class="btn my-3" href="/koordinator/list-pendaftaran-seminar-ta-1" role="button"
+            <a class="btn my-3" href="/koordinator/list-pendaftaran-seminar-ta-2" role="button"
                 style="background-color:#ff8c1a; width: 20rem;">Pendaftaran
                 Seminar TA 2</a>
         </div>

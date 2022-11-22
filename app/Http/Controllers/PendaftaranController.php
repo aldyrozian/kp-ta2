@@ -94,14 +94,14 @@ class PendaftaranController extends Controller
 
         //step 3
         $file = request()->validate([
-            'berkas_ta1' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
+            'berkas_ta2' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
             'tagihan_uang' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
             'lunas_pembayaran' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
         ]);
 
-        if (request()->file('berkas_ta1')) {
-            $file['berkas_ta1'] = request()->file('berkas_ta1')->store('berkas_ta1');
-        } else $file['berkas_ta1'] = null;
+        if (request()->file('berkas_ta2')) {
+            $file['berkas_ta2'] = request()->file('berkas_ta2')->store('berkas_ta2');
+        } else $file['berkas_ta2'] = null;
         if (request()->file('tagihan_uang')) {
             $file['tagihan_uang'] = request()->file('tagihan_uang')->store('tagihan_uang');
         } else $file['tagihan_uang'] = null;
@@ -111,8 +111,8 @@ class PendaftaranController extends Controller
 
         $mahasiswa_id = auth()->user()->mahasiswa->id;
         $pendaftaran = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->update([
-            'judul_ta1' => request('judul_ta1'),
-            'berkas_ta1' => $file['berkas_ta1'],
+            'judul_ta2' => request('judul_ta2'),
+            'berkas_ta2' => $file['berkas_ta2'],
             'tagihan_uang' => $file['tagihan_uang'],
             'lunas_pembayaran' => $file['lunas_pembayaran'],
         ]);
@@ -189,9 +189,9 @@ class PendaftaranController extends Controller
             $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
             $list_p2 = \App\Models\Dosen::all();
             $formBimbingan = auth()->user()->mahasiswa->bimbingan;
-            return view('mahasiswa.pendaftaran-ta-1-step2', [
+            return view('mahasiswa.pendaftaran-ta-2-step2', [
                 'title' => 'Pendaftaran TA 2',
-                'name' => 'Fahmi Yusron Fiddin',
+                'name' => 'Lorem',
                 'role' => 'Mahasiswa',
                 'seminar' => '',
                 'list_p1' => $list_p1,
@@ -251,7 +251,7 @@ class PendaftaranController extends Controller
             $list_p1 = \App\Models\Pembimbing1::with('dosen')->get();
             $list_p2 = \App\Models\Dosen::all();
             $formBimbingan = auth()->user()->mahasiswa->bimbingan;
-            return view('mahasiswa.pendaftaran-ta-1-step3', [
+            return view('mahasiswa.pendaftaran-ta-2-step3', [
                 'title' => 'Pendaftaran TA 2',
                 'name' => 'Lorom Name',
                 'role' => 'Mahasiswa',
@@ -267,14 +267,14 @@ class PendaftaranController extends Controller
     public function storeStep3(Request $request)
     {
         $file = request()->validate([
-            'berkas_ta1' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
+            'berkas_ta2' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
             'tagihan_uang' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
             'lunas_pembayaran' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
         ]);
 
-        if (request()->file('berkas_ta1')) {
-            $file['berkas_ta1'] = request()->file('berkas_ta1')->store('berkas_ta1');
-        } else $file['berkas_ta1'] = null;
+        if (request()->file('berkas_ta2')) {
+            $file['berkas_ta2'] = request()->file('berkas_ta2')->store('berkas_ta2');
+        } else $file['berkas_ta2'] = null;
         if (request()->file('tagihan_uang')) {
             $file['tagihan_uang'] = request()->file('tagihan_uang')->store('tagihan_uang');
         } else $file['tagihan_uang'] = null;
@@ -284,8 +284,8 @@ class PendaftaranController extends Controller
 
         $mahasiswa_id = auth()->user()->mahasiswa->id;
         $pendaftaran = Pendaftaran::where('mahasiswa_id', $mahasiswa_id)->update([
-            'judul_ta1' => request('judul_ta1'),
-            'berkas_ta1' => $file['berkas_ta1'],
+            'judul_ta2' => request('judul_ta2'),
+            'berkas_ta2' => $file['berkas_ta2'],
             'tagihan_uang' => $file['tagihan_uang'],
             'lunas_pembayaran' => $file['lunas_pembayaran'],
         ]);
@@ -304,7 +304,7 @@ class PendaftaranController extends Controller
             })->get();
             $list_p2 = \App\Models\Dosen::all();
             $formBimbingan = auth()->user()->mahasiswa->bimbingan;
-            return view('mahasiswa.pendaftaran-ta-1-step4', [
+            return view('mahasiswa.pendaftaran-ta-2-step4', [
                 'title' => 'Pendaftaran TA 2',
                 'name' => 'Lorem Name',
                 'role' => 'Mahasiswa',
@@ -366,7 +366,7 @@ class PendaftaranController extends Controller
     {
         $formBimbingan = auth()->user()->mahasiswa->bimbingan;
 
-        return view('mahasiswa.status-pendaftaran-ta-1', [
+        return view('mahasiswa.status-pendaftaran-ta-2', [
             'title' => 'Status Pendaftaran TA 2',
             'name' => 'Lorem Name',
             'role' => 'Mahasiswa',
@@ -436,7 +436,7 @@ class PendaftaranController extends Controller
 
     public function showSyarat()
     {
-        return view('mahasiswa.syarat-pendaftaran-ta-1', [
+        return view('mahasiswa.syarat-pendaftaran-ta-2', [
             'title' => 'Status Pendaftaran TA 2',
             'role' => 'Mahasiswa',
             'syarat' => auth()->user()->pendaftaran->keterangan_status
@@ -445,7 +445,7 @@ class PendaftaranController extends Controller
 
     public function showAlasan()
     {
-        return view('mahasiswa.syarat-pendaftaran-ta-1', [
+        return view('mahasiswa.syarat-pendaftaran-ta-2', [
             'title' => 'Status Pendaftaran TA 2',
             'role' => 'Mahasiswa',
             'syarat' => auth()->user()->pendaftaran->keterangan_status
@@ -456,15 +456,15 @@ class PendaftaranController extends Controller
 // public function storeStep1(Request $request)
 //     {
 //         $file = request()->validate([
-//             'berkas_ta1' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
+//             'berkas_ta2' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
 //             'tagihan_uang' => 'file|max:5120|mimes:doc,docx,pdf,ppt,pptx',
 //             'lunas_pembayaran' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx',
 //             'khs' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
 //         ]);
 
-//         if (request()->file('berkas_ta1')) {
-//             $file['berkas_ta1'] = request()->file('berkas_ta1')->store('berkas_ta1');
-//         } else $file['berkas_ta1'] = null;
+//         if (request()->file('berkas_ta2')) {
+//             $file['berkas_ta2'] = request()->file('berkas_ta2')->store('berkas_ta2');
+//         } else $file['berkas_ta2'] = null;
 //         if (request()->file('tagihan_uang')) {
 //             $file['tagihan_uang'] = request()->file('tagihan_uang')->store('tagihan_uang');
 //         } else $file['tagihan_uang'] = null;
@@ -499,8 +499,8 @@ class PendaftaranController extends Controller
 //             'po1' => request('po1'),
 //             'prak_po1' => request('prak_po1'),
 //             'appl' => request('appl'),
-//             'judul_ta1' => request('judul_ta1'),
-//             'berkas_ta1' => $file['berkas_ta1'],
+//             'judul_ta2' => request('judul_ta2'),
+//             'berkas_ta2' => $file['berkas_ta2'],
 //             'tagihan_uang' => $file['tagihan_uang'],
 //             'lunas_pembayaran' => $file['lunas_pembayaran'],
 //             'khs' => $file['khs'],
@@ -520,5 +520,5 @@ class PendaftaranController extends Controller
 //             'pendaftaran_id' => $pendaftaran->id
 //         ]);
 
-//         return redirect()->intended('/mahasiswa/pendaftaran-ta-1/status');
+//         return redirect()->intended('/mahasiswa/pendaftaran-ta-2/status');
 //     }

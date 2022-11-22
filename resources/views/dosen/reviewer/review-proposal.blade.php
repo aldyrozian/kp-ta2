@@ -69,7 +69,7 @@
                             @endif
                             <td>
                                 <a class="btn"
-                                    href="/dosen/reviewer-1/review-proposal/downloadBerkasTa1-{{ $review->pendaftaran->id }}"
+                                    href="/dosen/reviewer-1/review-proposal/downloadBerkasta2-{{ $review->pendaftaran->id }}"
                                     style="background-color:#ff8c1a;"><i class="fa-solid fa-download"></i>
                                     Berkas</a>
                                 @if ($review->r1_penilaian1)

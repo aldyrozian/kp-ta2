@@ -14,7 +14,7 @@ class TUPendaftaranAdministrasiController extends Controller
         $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->filter(request('search'))
             ->orderBy(Mahasiswa::select('name')->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'))->filter(request('search'))->paginate(7)->withQueryString();
         return view(
-            'tu.list-pendaftaran-ta-1',
+            'tu.list-pendaftaran-ta-2',
             [
                 'title' => 'Pendaftaran Administrasi TA 2',
                 'role' => 'Tata Usaha',
@@ -153,8 +153,8 @@ class TUPendaftaranAdministrasiController extends Controller
                 // 'tagihan_uang' => request('tagihan_uang'),
                 // 'lunas_pembayaran' => request('lunas_pembayaran'),
                 // 'khs' => request('khs'),
-                // 'berkas_ta1' => request('berkas_ta1'),
-                'judul_ta1' => request('judul_ta1'),
+                // 'berkas_ta2' => request('berkas_ta2'),
+                'judul_ta2' => request('judul_ta2'),
                 'alt1_p1' => request('alt1_p1'),
                 'alt1_p2' => request('alt1_p2'),
                 'alt2_p1' => request('alt2_p1'),
@@ -180,7 +180,7 @@ class TUPendaftaranAdministrasiController extends Controller
         $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
         return view('tu.detail-mahasiswa', [
             'title' => 'Pendaftaran TA 2',
-            'name' => 'Galang Setia Nugroho',
+            'name' => 'Lorem',
             'role' => 'Tata Usaha',
             'pendaftaran' => $pendaftaran,
             'status' => $pendaftaran->status
@@ -209,11 +209,11 @@ class TUPendaftaranAdministrasiController extends Controller
         $filepath = public_path("storage/{$data->lunas_pembayaran}");
         return response()->download($filepath);
     }
-    public function downloadBerkasTa1($id)
+    public function downloadBerkasta2($id)
     {
         $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->berkas_ta1}");
-        if ($data->berkas_ta1 == null) {
+        $filepath = public_path("storage/{$data->berkas_ta2}");
+        if ($data->berkas_ta2 == null) {
             return back()->with('null', 'File tidak ada!');
         } else {
             return response()->download($filepath);

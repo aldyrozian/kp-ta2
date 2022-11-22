@@ -10,7 +10,7 @@
 
 <div class="d-flex mt-4">
     <div class="me-auto p-2">
-        <form action="/koordinator/list-pendaftaran-seminar-ta-1">
+        <form action="/koordinator/list-pendaftaran-seminar-ta-2">
             <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"
                     value="{{ request('search') }}">
@@ -183,7 +183,7 @@
                             " style="width: 9rem; cursor:default; ">{{ $pendaftaran->status }}</button>
             </td>
             <td>
-                <a class="btn" href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}"
+                <a class="btn" href="/koordinator/list-pendaftaran-seminar-ta-2/{{ $pendaftaran->id }}"
                     style="background-color:#ff8c1a;"><i class="fa-solid fa-align-left"></i> Detail</a>
             </td>
         </tr>

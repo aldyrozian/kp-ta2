@@ -1,7 +1,7 @@
 @extends('layouts/main')
 @section('container')
 <h2 style="text-align:center;">Syarat</h2>
-<form action="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}" method="post">
+<form action="/koordinator/list-pendaftaran-seminar-ta-2/{{ $pendaftaran->id }}" method="post">
     @csrf
     <div class="row align-items-start mt-2">
         <div class="row g-3">
@@ -275,7 +275,7 @@
                 @endif
             </div>
             <div class="col-12 mt-5">
-                <a class="btn" href="/koordinator/list-pendaftaran-seminar-ta-1/{{ $pendaftaran->id }}" role="button"
+                <a class="btn" href="/koordinator/list-pendaftaran-seminar-ta-2/{{ $pendaftaran->id }}" role="button"
                     style="width: 5rem;background-color:#ff8c1a;">Back</a>
                 <button type="submit" class="btn" style="width: 5rem;background-color:#ff8c1a;">Submit</button>
             </div>

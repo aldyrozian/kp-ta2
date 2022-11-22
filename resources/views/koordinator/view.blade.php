@@ -5,5 +5,5 @@
 <!-- <object data="public/storage/khs/5tdjo3ajCmJSQT1etaU2lmMGrtOSvlRarIXFWqDg.pdf" width="100%" height="600">
 </object>
 
-<embed src="C:/KP/si-ta1/public/storage/khs/5tdjo3ajCmJSQT1etaU2lmMGrtOSvlRarIXFWqDg.pdf" width="100%" height="500"> -->
+<embed src="C:/KP/si-ta2/public/storage/khs/5tdjo3ajCmJSQT1etaU2lmMGrtOSvlRarIXFWqDg.pdf" width="100%" height="500"> -->
 @endsection

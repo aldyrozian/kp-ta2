@@ -74,10 +74,10 @@ class AjuanPembimbing2Controller extends Controller
         //
     }
 
-    public function downloadBerkasTA1($id)
+    public function downloadBerkasta2($id)
     {
         $data = Pendaftaran::where('id', $id)->first();
-        $filepath = public_path("storage/{$data->berkas_ta1}");
+        $filepath = public_path("storage/{$data->berkas_ta2}");
         return response()->download($filepath);
     }
 

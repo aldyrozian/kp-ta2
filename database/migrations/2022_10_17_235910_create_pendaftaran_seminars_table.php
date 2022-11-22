@@ -32,8 +32,8 @@ return new class extends Migration
             $table->string('tagihan_uang')->nullable();
             $table->string('lunas_pembayaran')->nullable();
             $table->string('khs')->nullable();
-            $table->string('berkas_ta1')->nullable();
-            $table->string('judul_ta1')->nullable();
+            $table->string('berkas_ta2')->nullable();
+            $table->string('judul_ta2')->nullable();
 
             // Status Pendaftaran
             $table->string('status')->nullable();

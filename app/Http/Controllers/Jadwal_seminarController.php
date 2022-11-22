@@ -17,7 +17,7 @@ class Jadwal_seminarController extends Controller
             'k-jadwal-seminar',
             [
                 'title' => 'Jadwal Seminar',
-                'name' => 'Galang Setia Nugroho',
+                'name' => 'Lorem',
                 'role' => 'Koordinator'
             ]
         );

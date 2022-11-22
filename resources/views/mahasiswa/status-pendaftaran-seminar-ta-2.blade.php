@@ -25,7 +25,7 @@
     @if ($status == 'Lolos Bersyarat' || $status == 'Lolos')
     <div class="d-flex justify-content-center mt-5">
         <a class="btn" style="width: auto; background-color:#ff8c1a;"
-            href="/mahasiswa/pendaftaran-seminar-ta-1/status/download">Jadwal Seminar <i
+            href="/mahasiswa/pendaftaran-seminar-ta-2/status/download">Jadwal Seminar <i
                 class="fa-solid fa-download"></i>
         </a>
     </div>
@@ -36,10 +36,10 @@
 <div class="d-flex justify-content-center mt-5">
     <a href="/mahasiswa" class="btn" style="background-color:#ff8c1a;">Kembali</a>
     @if ($status == 'Lolos Bersyarat')
-    <a href="/mahasiswa/pendaftaran-seminar-ta-1/status/syarat" class="btn mx-2"
+    <a href="/mahasiswa/pendaftaran-seminar-ta-2/status/syarat" class="btn mx-2"
         style="background-color:#ff8c1a;">Syarat</a>
     @elseif ($status == 'Tidak Lolos')
-    <a href="/mahasiswa/pendaftaran-seminar-ta-1/status/alasan-tidak-lolos" class="btn mx-2"
+    <a href="/mahasiswa/pendaftaran-seminar-ta-2/status/alasan-tidak-lolos" class="btn mx-2"
         style="background-color:#ff8c1a;">Alasan</a>
     @endif
 </div>

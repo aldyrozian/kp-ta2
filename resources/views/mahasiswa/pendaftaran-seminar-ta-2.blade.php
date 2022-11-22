@@ -10,10 +10,10 @@
 
 <div class="row align-items-start mt-3">
     @if ($seminar == '')
-    <form class="" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-1" method="POST"
+    <form class="" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-2" method="POST"
         enctype="multipart/form-data">
         @else
-        <form class="" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1" method="POST"
+        <form class="" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-2" method="POST"
             enctype="multipart/form-data">
             @endif
             @csrf
@@ -103,14 +103,14 @@
 
 
             <div class="col-md-12">
-                <label for="judul_ta1" class="form-label">Judul Penelitian</label>
-                <input type="text" class="form-control error" name="judul_ta1" id="judul_ta1"
+                <label for="judul_ta2" class="form-label">Judul Penelitian</label>
+                <input type="text" class="form-control error" name="judul_ta2" id="judul_ta2"
                     placeholder="Judul Penelitian">
             </div>
             <div class="row mt-4">
                 <div class="col-md-5">
-                    <label for="berkas_ta1" class="form-label">Berkas Penelitian</label>
-                    <input class="form-control" type="file" id="berkas_ta1" name="berkas_ta1">
+                    <label for="berkas_ta2" class="form-label">Berkas Penelitian</label>
+                    <input class="form-control" type="file" id="berkas_ta2" name="berkas_ta2">
                 </div>
             </div>
             <div class="row mt-4">

@@ -7,12 +7,13 @@ use App\Models\Mahasiswa;
 use App\Models\PendaftaranSeminar;
 use Illuminate\Http\Request;
 
-class ListPendaftaranSeminarTA1Controller extends Controller
+class ListPendaftaranSeminarta2Controller extends Controller
 {
     public function index(Request $request)
     {
+        
         $kuncipendaftaran = KunciPendaftaran::first();
-        $list_pendaftaran = PendaftaranSeminar::with('mahasiswa')->where('berkas_ta1', '!=', null)->filter(request('search'));
+        $list_pendaftaran = PendaftaranSeminar::with('mahasiswa')->where('berkas_ta2', '!=', null)->filter(request('search'));
 
         if ($request->sortBy) {
             $list_pendaftaran = $list_pendaftaran->orderBy(Mahasiswa::select($request->sortBy)->whereColumn('mahasiswas.id', 'pendaftaran_seminars.mahasiswa_id'), $request->sortAsc);
@@ -20,7 +21,7 @@ class ListPendaftaranSeminarTA1Controller extends Controller
 
         $list_pendaftaran = $list_pendaftaran->paginate(7);
         return view(
-            'koordinator.list-pendaftaran-seminar-ta-1',
+            'koordinator.list-pendaftaran-seminar-ta-2',
             [
                 'title' => 'Pendaftaran Seminar TA 2',
                 'role' => 'Koordinator',
@@ -65,7 +66,7 @@ class ListPendaftaranSeminarTA1Controller extends Controller
             'keterangan_status' => $syarat
         ]);
 
-        return redirect('/koordinator/list-pendaftaran-seminar-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
+        return redirect('/koordinator/list-pendaftaran-seminar-ta-2')->with('success', 'Status kelolosan telah diperbarui!');
     }
 
     public function show($id)
@@ -95,7 +96,7 @@ class ListPendaftaranSeminarTA1Controller extends Controller
         $mahasiswa_id = $pendaftaran->mahasiswa_id;
         if (request('status') != $pendaftaran->status) {
             PendaftaranSeminar::where('id', $id)->update(['status' => request('status')]);
-            return redirect('/koordinator/list-pendaftaran-seminar-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
+            return redirect('/koordinator/list-pendaftaran-seminar-ta-2')->with('success', 'Status kelolosan telah diperbarui!');
         } else {
             PendaftaranSeminar::where('id', $id)->update([
                 'tempat_lahir' => request('tempat_lahir'),
@@ -123,8 +124,8 @@ class ListPendaftaranSeminarTA1Controller extends Controller
                 // 'tagihan_uang' => request('tagihan_uang'),
                 // 'lunas_pembayaran' => request('lunas_pembayaran'),
                 // 'khs' => request('khs'),
-                // 'berkas_ta1' => request('berkas_ta1'),
-                'judul_ta1' => request('judul_ta1'),
+                // 'berkas_ta2' => request('berkas_ta2'),
+                'judul_ta2' => request('judul_ta2'),
                 'alt1_p1' => request('alt1_p1'),
                 'alt1_p2' => request('alt1_p2'),
                 'alt2_p1' => request('alt2_p1'),
@@ -141,7 +142,7 @@ class ListPendaftaranSeminarTA1Controller extends Controller
                 'name' => request('name'),
                 'nim' => request('nim')
             ]);
-            return redirect('/koordinator/list-pendaftaran-seminar-ta-1')->with('success', 'Pendaftaran telah diperbarui!');
+            return redirect('/koordinator/list-pendaftaran-seminar-ta-2')->with('success', 'Pendaftaran telah diperbarui!');
         }
     }
 
@@ -157,11 +158,11 @@ class ListPendaftaranSeminarTA1Controller extends Controller
         $filepath = public_path("storage/{$data->lunas_pembayaran}");
         return response()->download($filepath);
     }
-    public function downloadBerkasTa1($id)
+    public function downloadBerkasta2($id)
     {
         $data = PendaftaranSeminar::with('mahasiswa')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->berkas_ta1}");
-        if ($data->berkas_ta1 == null) {
+        $filepath = public_path("storage/{$data->berkas_ta2}");
+        if ($data->berkas_ta2 == null) {
             return back()->with('null', 'File tidak ada!');
         } else {
             return response()->download($filepath);

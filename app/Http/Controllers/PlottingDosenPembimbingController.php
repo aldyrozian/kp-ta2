@@ -40,7 +40,7 @@ class PlottingDosenPembimbingController extends Controller
             'koordinator.plotting-dosen-pembimbing',
             [
                 'title' => 'Plotting Dosen Pembimbing',
-                'name' => 'Galang Setia Nugroho',
+                'name' => 'Lorem',
                 'role' => 'Koordinator',
                 'pendaftarans' => $pendaftarans,
                 'sortBy' => $request->sortBy,
@@ -59,7 +59,7 @@ class PlottingDosenPembimbingController extends Controller
             'koordinator.isian-plotting-dosen-pembimbing',
             [
                 'title' => 'Plotting P1',
-                'name' => 'Galang Setia Nugroho',
+                'name' => 'Lorem',
                 'role' => 'Koordinator',
                 'plotting_dosen' => 'Pembimbing',
                 'pendaftaran' => $pendaftaran,

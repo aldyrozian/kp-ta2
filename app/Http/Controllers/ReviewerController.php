@@ -28,7 +28,7 @@ class ReviewerController extends Controller
     {
 
         $list_review = \App\Models\Review::with('pendaftaran')->where('r1_id', auth()->user()->reviewer1->id)->whereHas('pendaftaran', function ($query) {
-            return $query->where('berkas_ta1', '!=', null);
+            return $query->where('berkas_ta2', '!=', null);
         })->oldest()->filterReviewProposal(request('search'))->paginate(7)->withQueryString();
         return view('dosen.reviewer.review-proposal', [
             'title' => 'Review Proposal',

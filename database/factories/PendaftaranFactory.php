@@ -43,8 +43,8 @@ class PendaftaranFactory extends Factory
             'tagihan_uang' => fake()->mimeType(),
             'lunas_pembayaran' => fake()->mimeType(),
             'khs' => fake()->mimeType(),
-            'judul_ta1' => fake()->sentence(10),
-            'berkas_ta1' => fake()->mimeType()
+            'judul_ta2' => fake()->sentence(10),
+            'berkas_ta2' => fake()->mimeType()
 
             // Ajuan Dosen
 

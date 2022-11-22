@@ -16,11 +16,11 @@ class PendaftaranSeminarController extends Controller
         $angka_mutus = ['A', 'AB', 'B', 'BC', 'C', 'D', 'E', 'Belum Diambil'];
         $status_matkuls = ['Sudah Selesai', 'Sedang Diambil', 'Belum Diambil'];
 
-        if (!isset(auth()->user()->pendaftaranseminar->berkas_ta1)) {
+        if (!isset(auth()->user()->pendaftaranseminar->berkas_ta2)) {
             if (KunciPendaftaran::first()->seminar == 1) {
                 return redirect()->intended('/mahasiswa')->with('gagal', 'Maaf, pendaftaran seminar sudah ditutup!');
             }
-            return view('mahasiswa.pendaftaran-seminar-ta-1', [
+            return view('mahasiswa.pendaftaran-seminar-ta-2', [
                 'title' => 'Pendaftaran Seminar TA 2',
                 'role' => 'Mahasiswa',
                 'formBimbingan' => $formBimbingan,
@@ -31,22 +31,22 @@ class PendaftaranSeminarController extends Controller
                 'status_matkuls' => $status_matkuls
             ]);
         } else {
-            return redirect()->intended('/mahasiswa/pendaftaran-seminar-ta-1/status');
+            return redirect()->intended('/mahasiswa/pendaftaran-seminar-ta-2/status');
         }
     }
 
     public function store(Request $request)
     {
         $file = request()->validate([
-            'berkas_ta1' => 'file|max:10120|mimes:doc,docx,pdf,ppt,pptx',
+            'berkas_ta2' => 'file|max:10120|mimes:doc,docx,pdf,ppt,pptx',
             'tagihan_uang' => 'file|max:10120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx',
             'lunas_pembayaran' => 'file|max:10120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx',
             'khs' => 'file|max:5120|mimes:jpg,jpeg,png,doc,docx,pdf,ppt,pptx'
         ]);
 
-        if (request()->file('berkas_ta1')) {
-            $file['berkas_ta1'] = request()->file('berkas_ta1')->store('seminar_berkas_ta1');
-        } else $file['berkas_ta1'] = null;
+        if (request()->file('berkas_ta2')) {
+            $file['berkas_ta2'] = request()->file('berkas_ta2')->store('seminar_berkas_ta2');
+        } else $file['berkas_ta2'] = null;
         if (request()->file('tagihan_uang')) {
             $file['tagihan_uang'] = request()->file('tagihan_uang')->store('seminar_tagihan_uang');
         } else $file['tagihan_uang'] = null;
@@ -66,21 +66,21 @@ class PendaftaranSeminarController extends Controller
             'jumlah_teori_d' => request('jumlah_teori_d'),
             'jumlah_prak_d' => request('jumlah_prak_d'),
             'jumlah_e' => request('jumlah_e'),
-            'judul_ta1' => request('judul_ta1'),
-            'berkas_ta1' => $file['berkas_ta1'],
+            'judul_ta2' => request('judul_ta2'),
+            'berkas_ta2' => $file['berkas_ta2'],
             'tagihan_uang' => $file['tagihan_uang'],
             'lunas_pembayaran' => $file['lunas_pembayaran'],
             'khs' => $file['khs'],
             'status' => ''
         ]);
 
-        return redirect()->intended('/mahasiswa/pendaftaran-seminar-ta-1/status');
+        return redirect()->intended('/mahasiswa/pendaftaran-seminar-ta-2/status');
     }
 
     public function status()
     {
         $formBimbingan = auth()->user()->mahasiswa->bimbingan;
-        return view('mahasiswa.status-pendaftaran-seminar-ta-1', [
+        return view('mahasiswa.status-pendaftaran-seminar-ta-2', [
             'title' => 'Status Pendaftaran Seminar TA 2',
             'formBimbingan' => $formBimbingan,
             'role' => 'Mahasiswa',
@@ -90,7 +90,7 @@ class PendaftaranSeminarController extends Controller
 
     public function showSyarat()
     {
-        return view('mahasiswa.syarat-pendaftaran-seminar-ta-1', [
+        return view('mahasiswa.syarat-pendaftaran-seminar-ta-2', [
             'title' => 'Status Pendaftaran Seminar TA 2',
             'role' => 'Mahasiswa',
             'syarat' => auth()->user()->pendaftaranseminar->keterangan_status
@@ -99,7 +99,7 @@ class PendaftaranSeminarController extends Controller
 
     public function showAlasan()
     {
-        return view('mahasiswa.syarat-pendaftaran-seminar-ta-1', [
+        return view('mahasiswa.syarat-pendaftaran-seminar-ta-2', [
             'title' => 'Status Pendaftaran Seminar TA 2',
             'role' => 'Mahasiswa',
             'syarat' => auth()->user()->pendaftaranseminar->keterangan_status

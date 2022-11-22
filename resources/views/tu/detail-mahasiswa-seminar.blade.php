@@ -162,19 +162,19 @@
         </div>
         <div class="my-4">
         </div>
-        @if ($pendaftaran->judul_ta1 != null)
+        @if ($pendaftaran->judul_ta2 != null)
         <div class="col-md-12">
-            <label for="judul_ta1" class="form-label">Judul Proposal</label>
-            <input type="text" class="form-control" name="judul_ta1" id="judul_ta1" readonly
-                value="{{ $pendaftaran->judul_ta1 }}">
+            <label for="judul_ta2" class="form-label">Judul Proposal</label>
+            <input type="text" class="form-control" name="judul_ta2" id="judul_ta2" readonly
+                value="{{ $pendaftaran->judul_ta2 }}">
         </div>
         @endif
-        @if ($pendaftaran->berkas_ta1 != null)
+        @if ($pendaftaran->berkas_ta2 != null)
         <div class="row mt-4">
             <div class="col-md-6">
-                <label for="berkas_ta1" class="form-label col-sm-5">Berkas Proposal</label>
+                <label for="berkas_ta2" class="form-label col-sm-5">Berkas Proposal</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
-                    href="/tu/pendaftaran-seminar/{{ $pendaftaran->id }}/downloadBerkasTa1">Download
+                    href="/tu/pendaftaran-seminar/{{ $pendaftaran->id }}/downloadBerkasta2">Download
                     <i class="fa-solid fa-download"></i></a>
             </div>
         </div>

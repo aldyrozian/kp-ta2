@@ -4,7 +4,7 @@
 <h2 class="text-center">{{ $title }}</h2>
 <div class="d-flex mt-4">
     <div class="me-auto p-2">
-        <form action="/koordinator/list-pendaftaran-ta-1">
+        <form action="/koordinator/list-pendaftaran-ta-2">
             <div class="input-group" style=" width: 100%;">
                 <input type=" text" class="form-control" placeholder="Search.." name="search"
                     value="{{ request('search') }}">
@@ -63,7 +63,7 @@
                         </td>
                         <td>
                             <a class="btn"
-                                href="/koordinator/list-pendaftaran-ta-1/detail-mahasiswa-{{ $mahasiswa->id }}"
+                                href="/koordinator/list-pendaftaran-ta-2/detail-mahasiswa-{{ $mahasiswa->id }}"
                                 role="button" style="background-color:#ff8c1a;">Detail</a>
                         </td>
                     </tr>

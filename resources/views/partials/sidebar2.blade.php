@@ -13,7 +13,7 @@
     @if($formBimbingan == null)
     disabled
     @endif
-    " href="/mahasiswa/pendaftaran-seminar-ta-1" role="button"
+    " href="/mahasiswa/pendaftaran-seminar-ta-2" role="button"
         style="background-color:#ff8c1a; width: 14rem;">Pendaftaran
         Seminar TA 2</a>
             </li>            

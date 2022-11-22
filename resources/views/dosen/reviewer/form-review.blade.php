@@ -19,7 +19,7 @@
             <div class="col-md-12">
                 <label for="name" class="form-label">Judul Proposal</label>
                 <input type="text" class="form-control" name="name" id="name" readonly disabled
-                    value="{{ $review->pendaftaran->judul_ta1 }}">
+                    value="{{ $review->pendaftaran->judul_ta2 }}">
             </div>
         </div>
         @if($review->pendaftaran->peminatan == "AIG")

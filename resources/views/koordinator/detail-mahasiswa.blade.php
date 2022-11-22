@@ -56,20 +56,20 @@
         </div>
         <div class="my-4">
         </div>
-        @if ($pendaftaran->judul_ta1 != null)
+        @if ($pendaftaran->judul_ta2 != null)
         <div class="col-md-6">
-            <label for="judul_ta1" class="form-label">Judul Proposal</label>
-            <input type="text" class="form-control" name="judul_ta1" id="judul_ta1" readonly
-                value="{{ $pendaftaran->judul_ta1 }}">
+            <label for="judul_ta2" class="form-label">Judul Proposal</label>
+            <input type="text" class="form-control" name="judul_ta2" id="judul_ta2" readonly
+                value="{{ $pendaftaran->judul_ta2 }}">
         </div>
         @endif
-        @if ($pendaftaran->berkas_ta1 != null)
+        @if ($pendaftaran->berkas_ta2 != null)
         <div class="row mt-4">
             <div class="col-md-7">
-                <label for="berkas_ta1" class="form-label col-sm-6">Berkas Proposal</label>
+                <label for="berkas_ta2" class="form-label col-sm-6">Berkas Proposal</label>
               
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadBerkasTa1">Download <i
+                    href="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}/downloadBerkasta2">Download <i
                         class="fa-solid fa-download"></i>
                 </a>
             </div>
@@ -79,7 +79,7 @@
             <div class="col-md-7">
                 <label for="tagihan_uang" class="form-label col-sm-6">Tagihan Uang Kuliah</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadTagihanUang">Download <i
+                    href="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}/downloadTagihanUang">Download <i
                         class="fa-solid fa-download"></i>
                 </a>
             </div>
@@ -88,7 +88,7 @@
             <div class="col-md-7">
                 <label for="lunas_pembayaran" class="form-label col-sm-6">Bukti Lunas Pembayaran</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadLunasPembayaran">Download
+                    href="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}/downloadLunasPembayaran">Download
                     <i class="fa-solid fa-download"></i>
                 </a>
             </div>
@@ -97,7 +97,7 @@
             <div class="col-md-7">
                 <label for="khs" class="form-label col-sm-6">KHS</label>
                 <a class="btn" style="width: 12rem; background-color:#ff8c1a;"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/downloadKhs">Download <i
+                    href="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}/downloadKhs">Download <i
                         class="fa-solid fa-download"></i>
                 </a>
             </div>
@@ -131,7 +131,7 @@
             @if ($status == null)
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    <form method="post" action="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
                         <input type="hidden" id="status" name="status" value="Lolos">
@@ -140,13 +140,13 @@
                     </form>
                 </div>
 
-                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
+                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
             @elseif ($status == "Lolos")
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    <form method="post" action="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
                         <input type="hidden" id="status" name="status" value="Lolos">
@@ -155,13 +155,13 @@
                     </form>
                 </div>
 
-                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
+                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
             @elseif ($status == "Lolos Bersyarat")
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    <form method="post" action="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
                         <input type="hidden" id="status" name="status" value="Lolos">
@@ -170,13 +170,13 @@
                     </form>
                 </div>
 
-                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
+                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
             @elseif ($status == "Pending")
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    <form method="post" action="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
                         <input type="hidden" id="status" name="status" value="Lolos">
@@ -185,13 +185,13 @@
                     </form>
                 </div>
 
-                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos"
+                <a class="btn btn-dark" href="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}/tidak-lolos"
                     role="button" style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
             @elseif ($status == "Tidak Lolos")
             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <form method="post" action="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}">
+                    <form method="post" action="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}">
                         @method('put')
                         @csrf
                         <input type="hidden" id="status" name="status" value="Lolos">
@@ -201,14 +201,14 @@
                 </div>
 
                 <a class="btn btn-dark disabled"
-                    href="/koordinator/list-pendaftaran-ta-1/{{ $pendaftaran->id }}/tidak-lolos" role="button"
+                    href="/koordinator/list-pendaftaran-ta-2/{{ $pendaftaran->id }}/tidak-lolos" role="button"
                     style="width: 10rem; height: 3rem;">Tidak Lolos</a>
             </div>
             @endif
         </div>
     </div>
     <div class="col-12 mt-5">
-        <a class="btn" href="/koordinator/list-pendaftaran-ta-1" role="button"
+        <a class="btn" href="/koordinator/list-pendaftaran-ta-2" role="button"
             style="width: 5rem;background-color:#ff8c1a;">Back</a>
     </div>
     <div style=" height: 100px;">

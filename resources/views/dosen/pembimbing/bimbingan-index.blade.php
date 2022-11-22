@@ -92,7 +92,7 @@
             <td> Pembimbing 2 </td>
             @endif
             <td>
-                @if($role == 'Pembimbing 1')
+                @if($isp1 == true)
                 <a class="btn btn-warning" href="/dosen/pembimbing-1/form-bimbingan/{{ $mahasiswa->mahasiswa->id  }}"><i
                         class="fa-solid fa-align-left"></i> Bimbingan</a>
                 @else

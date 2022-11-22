@@ -9,7 +9,9 @@ class BimbinganMahasiswa2Controller extends Controller
 {
     public function index()
     {
-        $mahasiswas = Pendaftaran::with('mahasiswa')->where('p2_id', auth()->user()->pembimbing2->id)->filterAjuanPembimbing(request('search'))->paginate(7)->withQueryString();
+        $mahasiswas = Pendaftaran::with('mahasiswa')->where('p2_id', auth()->user()->pembimbing2->id)
+        ->orWhere('p1_id', auth()->user()->pembimbing1->id)
+        ->filterAjuanPembimbing(request('search'))->paginate(7)->withQueryString();
         return view('dosen.pembimbing.bimbingan-index', [
             'title' => 'Bimbingan Mahasiswa',
             'role' => 'Pembimbing 2',

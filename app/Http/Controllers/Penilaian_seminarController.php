@@ -17,7 +17,7 @@ class Penilaian_seminarController extends Controller
             'k-penilaian-seminar',
             [
                 'title' => 'Berkas Penelitian Mahasiswa',
-                'name' => 'Galang Setia Nugroho',
+                'name' => 'Lorem',
                 'role' => 'Koordinator',
                 'list_mahasiswa' => \App\Models\Pendaftaran::latest()->filter(request('search'))->paginate(7)->withQueryString()
             ]

@@ -10,7 +10,7 @@ class ReviewerP1Controller extends Controller
     public function index()
     {
         $list_review = \App\Models\Review::with('pendaftaran', 'mahasiswa')->where('p1_id', auth()->user()->pembimbing1->id)->whereHas('pendaftaran', function ($query) {
-            return $query->where('berkas_ta1', '!=', null);
+            return $query->where('berkas_ta2', '!=', null);
         })->oldest()->filterReviewProposal(request('search'))->paginate(7)->withQueryString();
         return view('dosen.pembimbing.review-proposal', [
             'title' => 'Review Proposal',

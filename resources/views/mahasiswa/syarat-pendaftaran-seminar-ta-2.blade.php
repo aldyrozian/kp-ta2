@@ -15,7 +15,7 @@
     </div>
 </div>
 <div class="col-12 mt-5">
-    <a class="btn " href="/mahasiswa/pendaftaran-seminar-ta-1/status" role="button"
+    <a class="btn " href="/mahasiswa/pendaftaran-seminar-ta-2/status" role="button"
         style="width: 5rem;background-color:#ff8c1a;">Back</a>
 </div>
 

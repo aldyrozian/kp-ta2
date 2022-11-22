@@ -10,7 +10,7 @@ class TUPendaftaranSeminarController extends Controller
 {
     public function index()
     {
-        $list_pendaftaran = PendaftaranSeminar::with('mahasiswa')->where('berkas_ta1', '!=', null)->oldest()->filter(request('search'))
+        $list_pendaftaran = PendaftaranSeminar::with('mahasiswa')->where('berkas_ta2', '!=', null)->oldest()->filter(request('search'))
             ->paginate(7)->withQueryString();
         return view(
             'tu.pendaftaran-seminar',
@@ -112,8 +112,8 @@ class TUPendaftaranSeminarController extends Controller
                 // 'tagihan_uang' => request('tagihan_uang'),
                 // 'lunas_pembayaran' => request('lunas_pembayaran'),
                 // 'khs' => request('khs'),
-                // 'berkas_ta1' => request('berkas_ta1'),
-                'judul_ta1' => request('judul_ta1'),
+                // 'berkas_ta2' => request('berkas_ta2'),
+                'judul_ta2' => request('judul_ta2'),
                 'alt1_p1' => request('alt1_p1'),
                 'alt1_p2' => request('alt1_p2'),
                 'alt2_p1' => request('alt2_p1'),
@@ -146,11 +146,11 @@ class TUPendaftaranSeminarController extends Controller
         $filepath = public_path("storage/{$data->lunas_pembayaran}");
         return response()->download($filepath);
     }
-    public function downloadBerkasTa1($id)
+    public function downloadBerkasta2($id)
     {
         $data = PendaftaranSeminar::with('mahasiswa')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->berkas_ta1}");
-        if ($data->berkas_ta1 == null) {
+        $filepath = public_path("storage/{$data->berkas_ta2}");
+        if ($data->berkas_ta2 == null) {
             return back()->with('null', 'File tidak ada!');
         } else {
             return response()->download($filepath);

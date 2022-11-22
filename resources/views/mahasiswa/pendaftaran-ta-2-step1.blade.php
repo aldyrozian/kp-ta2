@@ -13,7 +13,7 @@
     <form  id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-2-step1" method="POST"
         enctype="multipart/form-data">
         @else
-        <form id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1-step1" method="POST">
+        <form id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-2-step1" method="POST">
             @endif
             @csrf
             @if ($pendaftaran != null)

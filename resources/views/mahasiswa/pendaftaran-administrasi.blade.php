@@ -13,7 +13,7 @@
     <form class="" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-2-step1" method="POST"
         enctype="multipart/form-data">
         @else
-        <form class="" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1-step1" method="POST">
+        <form class="" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-2-step1" method="POST">
             @endif
             @csrf
             @if ($pendaftaran != null)
@@ -96,8 +96,8 @@
                 </select>
             </div>
             <div class="col-md-6">
-                            <label for="judul_ta1" class="form-label">Judul Penelitian</label>
-                            <input type="text" class="form-control error" name="judul_ta1" id="judul_ta1" placeholder="Judul Penelitian">
+                            <label for="judul_ta2" class="form-label">Judul Penelitian</label>
+                            <input type="text" class="form-control error" name="judul_ta2" id="judul_ta2" placeholder="Judul Penelitian">
                         </div>
 
             @endif
@@ -149,7 +149,7 @@
                 <form class="row g-3" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-2-step1" method="POST"
                     enctype="multipart/form-data">
                     @else
-                    <form class="row g-3" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1-step1"
+                    <form class="row g-3" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-2-step1"
                         method="POST">
                         @endif
                         @csrf
@@ -186,8 +186,8 @@
 
                     <div class="row mt-4">
                         <div class="col-md-5">
-                            <label for="berkas_ta1" class="form-label">Berkas Penelitian</label>
-                            <input class="form-control" type="file" id="berkas_ta1" name="berkas_ta1">
+                            <label for="berkas_ta2" class="form-label">Berkas Penelitian</label>
+                            <input class="form-control" type="file" id="berkas_ta2" name="berkas_ta2">
                         </div>
                     </div>
                     <div class="row mt-4">

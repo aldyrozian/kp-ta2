@@ -85,7 +85,7 @@ class FormBimbinganController extends Controller
             'mahasiswa.detail-isian-form-bimbingan',
             [
                 'title' => 'Form Bimbingan',
-                'name' => 'Fahmi Yusron Fiddin',
+                'name' => 'Lorem',
                 'role' => 'Mahasiswa',
                 'bimbingan_ke' => $x,
                 'bimbingan' => $bimbingan,
@@ -108,7 +108,7 @@ class FormBimbinganController extends Controller
             'mahasiswa.edit-isian-form-bimbingan',
             [
                 'title' => 'Form Bimbingan',
-                'name' => 'Fahmi Yusron Fiddin',
+                'name' => 'Lorem',
                 'role' => 'Mahasiswa',
                 'bimbingan_ke' => $x,
                 'bimbingan' => $bimbingan,

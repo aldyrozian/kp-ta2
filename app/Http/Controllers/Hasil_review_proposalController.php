@@ -17,7 +17,7 @@ class Hasil_review_proposalController extends Controller
             'k-hasil-review',
             [
                 'title' => 'Hasil Review Proposal',
-                'name' => 'Galang Setia Nugroho',
+                'name' => 'Lorem',
                 'role' => 'Koordinator',
                 'list_mahasiswa' => \App\Models\Pendaftaran::latest()->filter(request('search'))->paginate(7)->withQueryString()
             ]
@@ -55,7 +55,7 @@ class Hasil_review_proposalController extends Controller
     {
         return view('k-detail-hasil-review', [
             'title' => 'Hasil Review Proposal',
-            'name' => 'Galang Setia Nugroho',
+            'name' => 'Lorem',
             'role' => 'Koordinator',
             'mahasiswa' => $id
         ]);

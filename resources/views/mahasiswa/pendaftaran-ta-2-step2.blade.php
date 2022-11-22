@@ -13,7 +13,7 @@
     <form class="row g-3" id="formAdministrasi" action="/mahasiswa/pendaftaran-ta-2-step2" method="POST"
         enctype="multipart/form-data">
         @else
-        <form class="row g-3" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-1-step2" method="POST">
+        <form class="row g-3" id="formSeminar" action="/mahasiswa/pendaftaran-seminar-ta-2-step2" method="POST">
             @endif
             @csrf
             </div>

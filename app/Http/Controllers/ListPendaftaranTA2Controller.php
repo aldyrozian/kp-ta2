@@ -10,7 +10,7 @@ use App\Models\PendaftaranSeminar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ListPendaftaranTA1Controller extends Controller
+class ListPendaftaranta2Controller extends Controller
 {
     public function index(Request $request)
     {
@@ -21,7 +21,7 @@ class ListPendaftaranTA1Controller extends Controller
         }
         $list_pendaftaran = $list_pendaftaran->paginate(7);
         return view(
-            'koordinator.list-pendaftaran-ta-1',
+            'koordinator.list-pendaftaran-ta-2',
             [
                 'title' => 'Pendaftaran Administrasi TA 2',
                 'role' => 'Koordinator',
@@ -105,7 +105,7 @@ class ListPendaftaranTA1Controller extends Controller
             PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->delete();
         }
 
-        return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
+        return redirect('/koordinator/list-pendaftaran-ta-2')->with('success', 'Status kelolosan telah diperbarui!');
     }
 
     public function show($id)
@@ -113,7 +113,7 @@ class ListPendaftaranTA1Controller extends Controller
         $pendaftaran = Pendaftaran::with('mahasiswa')->find($id);
         return view('koordinator.detail-mahasiswa', [
             'title' => 'Pendaftaran TA 2',
-            'name' => 'Galang Setia Nugroho',
+            'name' => 'Lorem',
             'role' => 'Koordinator',
             'pendaftaran' => $pendaftaran,
             'status' => $pendaftaran->status
@@ -186,7 +186,7 @@ class ListPendaftaranTA1Controller extends Controller
             } elseif (request('status') == 'Pending' && PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first() != null) {
                 PendaftaranSeminar::where('mahasiswa_id', $mahasiswa_id)->first()->delete();
             }
-            return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Status kelolosan telah diperbarui!');
+            return redirect('/koordinator/list-pendaftaran-ta-2')->with('success', 'Status kelolosan telah diperbarui!');
         } else {
             Pendaftaran::where('id', $id)->update([
                 'tempat_lahir' => request('tempat_lahir'),
@@ -214,8 +214,8 @@ class ListPendaftaranTA1Controller extends Controller
                 // 'tagihan_uang' => request('tagihan_uang'),
                 // 'lunas_pembayaran' => request('lunas_pembayaran'),
                 // 'khs' => request('khs'),
-                // 'berkas_ta1' => request('berkas_ta1'),
-                'judul_ta1' => request('judul_ta1'),
+                // 'berkas_ta2' => request('berkas_ta2'),
+                'judul_ta2' => request('judul_ta2'),
                 'alt1_p1' => request('alt1_p1'),
                 'alt1_p2' => request('alt1_p2'),
                 'alt2_p1' => request('alt2_p1'),
@@ -232,7 +232,7 @@ class ListPendaftaranTA1Controller extends Controller
                 'name' => request('name'),
                 'nim' => request('nim')
             ]);
-            return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Pendaftaran telah diperbarui!');
+            return redirect('/koordinator/list-pendaftaran-ta-2')->with('success', 'Pendaftaran telah diperbarui!');
         }
     }
 
@@ -245,7 +245,7 @@ class ListPendaftaranTA1Controller extends Controller
             'pendaftaran_administrasi_id' => null
         ]);
 
-        return redirect('/koordinator/list-pendaftaran-ta-1')->with('success', 'Pendaftaran telah dihapus!');
+        return redirect('/koordinator/list-pendaftaran-ta-2')->with('success', 'Pendaftaran telah dihapus!');
     }
 
     public function downloadTagihanUang($id)
@@ -260,11 +260,11 @@ class ListPendaftaranTA1Controller extends Controller
         $filepath = public_path("storage/{$data->lunas_pembayaran}");
         return response()->download($filepath);
     }
-    public function downloadBerkasTa1($id)
+    public function downloadBerkasta2($id)
     {
         $data = Pendaftaran::with('mahasiswa')->where('id', $id)->first();
-        $filepath = public_path("storage/{$data->berkas_ta1}");
-        if ($data->berkas_ta1 == null) {
+        $filepath = public_path("storage/{$data->berkas_ta2}");
+        if ($data->berkas_ta2 == null) {
             return back()->with('null', 'File tidak ada!');
         } else {
             return response()->download($filepath);
@@ -283,7 +283,7 @@ class ListPendaftaranTA1Controller extends Controller
         $list_pendaftaran = Pendaftaran::with('mahasiswa')->oldest()->filter(request('search'))
             ->orderBy(Mahasiswa::select('name')->whereColumn('mahasiswas.id', 'pendaftarans.mahasiswa_id'))->paginate(100)->withQueryString();
         return view(
-            'koordinator.list-pendaftaran-ta-1-printable',
+            'koordinator.list-pendaftaran-ta-2-printable',
             [
                 'title' => 'Pendaftaran Administrasi TA 2',
                 'role' => 'Koordinator',
