@@ -38,6 +38,7 @@ use App\Http\Controllers\PlottingDosenReviewer2Controller;
 use App\Http\Controllers\PlottingDosenPembimbingController;
 use App\Http\Controllers\ListPendaftaranSeminarta2Controller;
 use App\Http\Controllers\TUPendaftaranAdministrasiController;
+use App\Http\Controllers\PeriodePendaftaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,7 +143,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/koordinator/list-pendaftaran-seminar-ta-2/lock', [KunciPendaftaranController::class, 'lockSeminar'])->name('lockSeminar');
         Route::post('/koordinator/list-pendaftaran-seminar-ta-2/unlock', [KunciPendaftaranController::class, 'unlockSeminar'])->name('unlockSeminar');;
 
-
+        // Periode Pendaftaran
+        Route::get('/koordinator/periode-pendaftaran', [PeriodePendaftaranController::class, 'viewperiodependaftaran'])->name('viewperiodependaftaran');;
+        Route::post('/koordinator/periode-pendaftaran', [PeriodePendaftaranController::class, 'storeperiodependaftaran'])->name('storeperiodependaftaran');;
+        Route::get('/koordinator/periode-pendaftaran/delete/{id}', [PeriodePendaftaranController::class, 'deleteperiodependaftaran'])->name('deleteperiodependaftaran');;
         // Pendaftaran Administrasi TA 2
 
         Route::get('/koordinator/list-pendaftaran-ta-2/exportPdf', [ListPendaftaranta2Controller::class, 'exportPdf'])->name('exportPdf');

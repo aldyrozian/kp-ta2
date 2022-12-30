@@ -23,6 +23,12 @@
             </div>
         </form>
     </div>
+    {{-- Periode Pendaftaran Button --}}
+                    <div class="p-2">
+                        <a class="btn" href="{{ route('viewperiodependaftaran')}}" role="button" style="background-color:#ff8c1a;">
+                            <i class="fa-solid fa-calendar"></i>
+                        </a>
+                    </div>
     <div class=" p-2">
                         @if ($kuncipendaftaran->administrasi == 0)
                         <form action="{{ route('lockAdministrasi')}}" method="post"> <button class="btn" type="submit"
@@ -42,6 +48,8 @@
                         </form>
                         @endif
                 </div>
+
+                
                 <!-- ini print pdf -->
                 <div class="p-2">
                     <a class="btn" href="{{ route('exportPdf') }}" role="button" style="background-color:#ff8c1a;">
@@ -136,6 +144,33 @@
                             </a>
                             @endif
                         </th>
+                        <th scope="col">Periode
+                            @if ($sortAsc == 'ASC' && $sortBy == 'periode_pendaftaran')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=periode_pendaftaran&sortAsc={{$sortAsc=='ASC'&&$sortBy=='status'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('periode_pendaftaran')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @elseif ($sortAsc == 'DESC' && $sortBy == 'periode_pendaftaran')
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=periode_pendaftaran&sortAsc={{$sortAsc=='ASC'&&$sortBy=='status'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('periode_pendaftaran')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs"></i>
+                                </span>
+                            </a>
+                            @else
+                            <a
+                                href="{{request()->getPathInfo()}}?search={{$search}}&sortBy=periode_pendaftaran&sortAsc={{$sortAsc=='ASC'&&$sortBy=='status'?'DESC':'ASC'}}">
+                                <span wire:click="sortBy('periode_pendaftaran')" style="cursor: pointer;">
+                                    <i class="fa-solid fa-arrow-up fa-xs text-muted"></i>
+                                    <i class="fa-solid fa-arrow-down fa-xs text-muted"></i>
+                                </span>
+                            </a>
+                            @endif
+                        </th>
                         <th scope="col">Status
                             @if ($sortAsc == 'ASC' && $sortBy == 'status')
                             <a
@@ -173,6 +208,7 @@
                         <td>{{ $pendaftaran->mahasiswa->nim }}</td>
                         <td>{{ $pendaftaran->mahasiswa->name }}</td>
                         <td>{{ $pendaftaran->peminatan }}</td>
+                        <td>{{ $pendaftaran->periode_pendaftaran }}</td>
                         <td><button type="submit" class="btn
                             {{($pendaftaran->status == 'Lolos' ) ? 'btn-success' : '';}}
                             {{($pendaftaran->status == 'Lolos Bersyarat' ) ? 'btn-warning' : '';}}
@@ -222,7 +258,6 @@
 
                 </div> -->
             </div>
-            </>
     </div>
 
 

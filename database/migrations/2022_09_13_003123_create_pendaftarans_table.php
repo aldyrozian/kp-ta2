@@ -48,6 +48,7 @@ return new class extends Migration
             $table->boolean('s_u2')->nullable();
 
             // Status Pendaftaran
+            $table->string('periode_pendaftaran')->nullable();
             $table->string('status')->nullable();
             $table->text('keterangan_status')->nullable();
         });

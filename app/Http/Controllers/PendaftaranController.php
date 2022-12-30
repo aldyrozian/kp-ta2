@@ -9,6 +9,8 @@ use App\Models\Review;
 use App\Models\Dosen;
 use App\Models\Pembimbing1;
 use App\Models\Pembimbing2;
+use App\Models\PeriodePendaftaran;
+use Carbon\Carbon;
 
 class PendaftaranController extends Controller
 {
@@ -73,7 +75,17 @@ class PendaftaranController extends Controller
             'khs' => $file['khs']
         ]);
 
+        // Get the current date
+        $currentDate = Carbon::now();
 
+        // Query the database for the period that includes the current date
+        $period = PeriodePendaftaran::where('tanggal_mulai', '<=', $currentDate)
+            ->where('tanggal_selesai', '>=', $currentDate)
+            ->first();
+
+        // Return the period's id, or null if no such period exists
+        $Periodeke = $period ? $period->keterangan : null;
+        
         // Menentukan kelolosan dan kketerangan kelolosan
         $ketTidakLolos = '';
         if ($request['jumlah_e'] > 0 || $request['jumlah_teori_d'] >= 14) {
@@ -163,6 +175,7 @@ class PendaftaranController extends Controller
             'u2' => request('u2'),
             's_u1' => $u1_id,
             's_u2' => $u2_id,
+            'periode_pendaftaran'=> $Periodeke
 
         ]);
 
